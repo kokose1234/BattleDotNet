@@ -5,6 +5,7 @@ using System.Text;
 using System.Net;
 using System.Threading;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace BattleDotNet
 {
@@ -45,6 +46,9 @@ namespace BattleDotNet
 
         public string GetContent(string url)
         {
+            if (string.IsNullOrWhiteSpace(url))
+                throw new ArgumentNullException("url");
+
             HttpWebRequest webRequest = HttpWebRequest.Create(url) as HttpWebRequest;
             
             // Use GZip/Delfate when possible
@@ -54,6 +58,7 @@ namespace BattleDotNet
             // pool on a per-thread basis
             webRequest.ConnectionGroupName = Thread.CurrentThread.ManagedThreadId.ToString();
 
+            // TODO : Allow this to be set
             // Will help with speed by not having to check for automatic settings
             webRequest.Proxy = null;
 
@@ -71,6 +76,15 @@ namespace BattleDotNet
                     return reader.ReadToEnd();
                 }
             }
+        }
+
+        public T Get<T>(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+                throw new ArgumentNullException("url");
+
+            string content = GetContent(url);
+            return JsonConvert.DeserializeObject<T>(content);
         }
     }
 }
