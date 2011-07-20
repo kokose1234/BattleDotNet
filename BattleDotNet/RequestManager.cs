@@ -10,8 +10,37 @@ namespace BattleDotNet
 {
     public class RequestManager
     {
-        public RequestManager()
+        public RequestManager(string publicKey = null, string signature = null)
         {
+            if (string.IsNullOrWhiteSpace(publicKey) && !string.IsNullOrWhiteSpace(signature) ||
+                !string.IsNullOrWhiteSpace(publicKey) && string.IsNullOrWhiteSpace(signature))
+            {
+                throw new InvalidOperationException("Both Public Key and Signature need to be null or both specified.");
+            }
+
+            _publicKey = publicKey;
+            _signature = signature;
+
+            if (!string.IsNullOrWhiteSpace(_publicKey))
+                _bnetAuth = string.Format("BNET {0}:{1}", _publicKey, _signature);
+        }
+
+        private readonly string _publicKey;
+        public string PublicKey
+        {
+            get { return _publicKey; }
+        }
+
+        private readonly string _signature;
+        public string Signature
+        {
+            get { return _signature; }
+        }
+
+        private readonly string _bnetAuth;
+        public string BNetAuth
+        {
+            get { return _bnetAuth; }
         }
 
         public string GetContent(string url)
@@ -31,14 +60,15 @@ namespace BattleDotNet
             // Give some information
             webRequest.UserAgent = "BattleDotNet C# Library | http://github.com/ChadMoran/BattleDotNet";
 
+            // Add application authorization
+            if (!string.IsNullOrWhiteSpace(BNetAuth))
+                webRequest.Headers.Add("Authorization", BNetAuth);
+
             using (HttpWebResponse webResponse = webRequest.GetResponse() as HttpWebResponse)
             {
-                using (Stream responseStream = webResponse.GetResponseStream())
+                using (StreamReader reader = new StreamReader(webResponse.GetResponseStream()))
                 {
-                    using (StreamReader reader = new StreamReader(responseStream))
-                    {
-                        return reader.ReadToEnd();
-                    }
+                    return reader.ReadToEnd();
                 }
             }
         }
