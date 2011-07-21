@@ -18,13 +18,13 @@ namespace BattleDotNet
         private class RealmStatusData
         {
             [JsonProperty("realms")]
-            IEnumerable<RealmStatus> Realms { get; private set; }
+            public IEnumerable<RealmStatus> Realms { get; private set; }
         }
         #endregion
 
         public IEnumerable<RealmStatus> GetRealmStatuses(params string[] realms)
         {
-            return Enumerable.Empty<RealmStatus>();
+            return RequestManager.Get<RealmStatusData>("http://us.battle.net/api/wow/realm/status").Realms;
         }
     }
 }
