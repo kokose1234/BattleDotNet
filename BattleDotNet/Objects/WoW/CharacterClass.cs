@@ -12,7 +12,7 @@ namespace BattleDotNet.Objects.WoW
 
         public int Mask { get; private set; }
 
-        public CharacterClassPowerType PowerType { get; private set; }
+        public CharacterClassPowerType PowerType { get; private set; } // TODO: get a better name
 
         public string Name { get; private set; }
 
@@ -25,6 +25,7 @@ namespace BattleDotNet.Objects.WoW
             Name = name;
         }
 
+        #region Public Overrides
         public bool Equals(CharacterClass characterClass)
         {
             return this == characterClass;
@@ -40,6 +41,16 @@ namespace BattleDotNet.Objects.WoW
             return false;
         }
 
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode() ^ Mask.GetHashCode() ^ PowerType.GetHashCode() ^ Name.GetHashCode(); 
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
+        #endregion
 
         #region Static Class Properties
         public static CharacterClass Hunter
