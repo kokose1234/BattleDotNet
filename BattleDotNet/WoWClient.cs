@@ -10,7 +10,7 @@ namespace BattleDotNet
     public class WoWClient : Client
     {
         public WoWClient(string publicKey = null, string signature = null)
-            : base(publicKey, signature)
+            : base("wow", publicKey, signature)
         {
         }
 
@@ -24,7 +24,7 @@ namespace BattleDotNet
 
         public IEnumerable<RealmStatus> GetRealmStatuses(params string[] realms)
         {
-            return RequestManager.Get<RealmStatusData>("http://us.battle.net/api/wow/realm/status").Realms;
+            return this.Get<RealmStatusData>("realm/status").Realms;
         }
     }
 }

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleDotNet", "BattleDotNet\BattleDotNet.csproj", "{DB398E18-3B4E-4B52-8095-686DE019AC04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleDotNet.Tests", "BattleDotNet.Tests\BattleDotNet.Tests.csproj", "{45E1564A-A078-41F8-A27E-5EFAD08F6637}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{DB398E18-3B4E-4B52-8095-686DE019AC04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB398E18-3B4E-4B52-8095-686DE019AC04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB398E18-3B4E-4B52-8095-686DE019AC04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45E1564A-A078-41F8-A27E-5EFAD08F6637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E1564A-A078-41F8-A27E-5EFAD08F6637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E1564A-A078-41F8-A27E-5EFAD08F6637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E1564A-A078-41F8-A27E-5EFAD08F6637}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
