@@ -12,14 +12,16 @@ namespace BattleDotNet
         {
         }
 
-        public Client(string baseUrl, string publicKey = null, string signature = null)
+        public Client(string baseUrl, ClientRegion? region = null, string publicKey = null, string signature = null)
         {
             if (baseUrl == null)
                 throw new ArgumentNullException("baseUrl");
 
-            _baseUrl = NormalizePath(baseUrl);
+            // Defaults
+            Region = region ?? ClientRegion.US;
             UseHttps = true;
 
+            _baseUrl = NormalizePath(baseUrl);
             _requestManager = new RequestManager(publicKey, signature);
         }
 
@@ -41,7 +43,9 @@ namespace BattleDotNet
             return path.TrimEnd('/').TrimStart('/');
         }
 
-        protected T Get<T>(string path, IEnumerable<KeyValuePair<string, string>> parameters = null)
+        public ClientRegion Region { get; private set; }
+
+        protected T Get<T>(string path, IEnumerable<KeyValuePair<string, string>> parameters = null, ClientRegion? region = null)
         {
             if (path == null)
                 throw new ArgumentNullException(path);
@@ -49,10 +53,10 @@ namespace BattleDotNet
             string url = string.Format(
                     "{0}://{1}.battle.net/api/{2}/{3}",
                     UseHttps ? "https" : "http",
-                    "us",
+                    (region ?? this.Region).ToString().ToLowerInvariant(),
                     BaseUrl,
                     path
-                );            
+                );
 
             return _requestManager.Get<T>(url);
         }

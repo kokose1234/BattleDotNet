@@ -11,7 +11,7 @@ namespace BattleDotNet.Tests
         [Fact]
         public void Test()
         {
-            WoWClient client = new WoWClient();
+            WoWClient client = new WoWClient(region: ClientRegion.KR);
             Console.WriteLine(client.GetRealmStatuses().Count());
         }
     }
