@@ -12,7 +12,7 @@ namespace BattleDotNet.Objects.WoW
 
         public int Mask { get; private set; }
 
-        public CharacterClassPowerType PowerType { get; private set; } // TODO: get a better name
+        public CharacterClassPowerType PowerType { get; private set; } 
 
         public string Name { get; private set; }
 
@@ -154,7 +154,7 @@ namespace BattleDotNet.Objects.WoW
         #endregion
     }
 
-    public enum CharacterClassPowerType
+    public enum CharacterClassPowerType // TODO: get a better name
     {
         Energy,
         Focus,
