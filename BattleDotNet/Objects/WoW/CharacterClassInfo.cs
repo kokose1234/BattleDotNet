@@ -140,6 +140,56 @@ namespace BattleDotNet.Objects.WoW
             return c1 == c2;
         }
 
+        public static CharacterClassInfo FromCharacterClass(CharacterClass characterClass)
+        {
+            CharacterClassInfo info;
+
+            switch (characterClass)
+            {
+                case CharacterClass.DeathKnight:
+                    info = DeathKnight;
+                    break;
+
+                case CharacterClass.Druid:
+                    info = Druid;
+                    break;
+
+                case CharacterClass.Hunter:
+                    info = Hunter;
+                    break;
+
+                case CharacterClass.Mage:
+                    info = Mage;
+                    break;
+
+                case CharacterClass.Paladin:
+                    info = Paladin;
+                    break;
+
+                case CharacterClass.Priest;
+                    info = Priest;
+                    break;
+
+                case CharacterClass.Rogue:
+                    info = Rogue;
+                    break;
+
+                case CharacterClass.Shaman:
+                    info = Shaman;
+                    break;
+
+                case CharacterClass.Warlock:
+                    info = Warlock;
+                    break;
+
+                case CharacterClass.Warrior:
+                    info = Warrior;
+                    break;
+            }
+
+            return info;
+        }
+
         #region Operators
         public static bool operator ==(CharacterClassInfo c1, CharacterClassInfo c2)
         {
