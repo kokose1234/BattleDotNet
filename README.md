@@ -22,7 +22,7 @@ Get realm statuses using dynamic wrapper
 ** I made this decision to take Json.NET as a dependency due to it's speed and support for dynamics
 
 ## Q/A
-*	*Q: Why another?**  
+**Q: Why another?**  
 A: Why not?
 
 **Q: Why the requirement for .NET 4?**  

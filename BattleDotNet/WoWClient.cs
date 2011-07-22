@@ -26,5 +26,10 @@ namespace BattleDotNet
         {
             return this.Get<RealmStatusData>("realm/status", new Parameters { { "realms", string.Join(",", realms) } }).Realms;
         }
+
+        public Character GetCharacter(string name, string realm)
+        {
+            return this.Get<Character>(string.Format("character/{0}/{1}", realm, name));
+        }
     }
 }
