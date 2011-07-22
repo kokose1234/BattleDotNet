@@ -50,7 +50,7 @@ namespace BattleDotNet
                 throw new ArgumentNullException("url");
 
             HttpWebRequest webRequest = HttpWebRequest.Create(url) as HttpWebRequest;
-            
+
             // Use GZip/Delfate when possible
             webRequest.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             
@@ -63,7 +63,7 @@ namespace BattleDotNet
             webRequest.Proxy = null;
 
             // Give some information
-            webRequest.UserAgent = "BattleDotNet C# Library | http://github.com/ChadMoran/BattleDotNet";
+            webRequest.UserAgent = "BattleDotNet C# Library | https://github.com/ChadMoran/BattleDotNet";
 
             // Add application authorization
             if (!string.IsNullOrWhiteSpace(BNetAuth))

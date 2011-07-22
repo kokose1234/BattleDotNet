@@ -13,9 +13,9 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             dynamic client = new DynamicClient("wow");
-            dynamic x = client.Get("realm/status", realms: new[] { "test1", "test2" });
+            dynamic x = client.Get("realm/status", realms: string.Join(",", new[] { "Shattered-Hand", "Lightbringer" }));
 
-            Console.WriteLine(((IEnumerable<dynamic>)x.realms).First().name);
+            Console.WriteLine(((IEnumerable<dynamic>)x.realms).Count());
         }
     }
 }

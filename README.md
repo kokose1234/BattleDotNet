@@ -1,5 +1,14 @@
 # BattleDotNet C# Wrapper
 
+## Getting Started
+
+### WoW
+
+#### Realm Status
+
+	WoWClient client = new WoWClient();
+	IEnumerable<RealmStatus> = client.GetRealmStatuses();
+
 ## Requirements
 * .NET 4.0 Client Profile
 
