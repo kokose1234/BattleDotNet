@@ -2,12 +2,15 @@
 
 ## Getting Started
 
-### WoW
-
-#### Realm Status
+Get realm statuses using strongly-typed methods
 
 	WoWClient client = new WoWClient();
-	IEnumerable<RealmStatus> = client.GetRealmStatuses();
+	IEnumerable<RealmStatus> result = client.GetRealmStatuses();
+
+Get realm statuses using dynamic wrapper
+	
+	DynamicClient client = new DynamicClient("wow");
+	IEnumerable<dynamic> result = client.Get("realm/status").realms;
 
 ## Requirements
 * .NET 4.0 Client Profile
