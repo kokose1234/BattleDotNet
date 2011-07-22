@@ -18,7 +18,7 @@ namespace BattleDotNet.Tests
             //Console.WriteLine(((IEnumerable<dynamic>)x.realms).FirstOrDefault().ToString());
 
             var client = new WoWClient();
-            Console.WriteLine(client.GetCharacter("Xtek", "Shattered-Hand").Class);
+            Console.WriteLine(client.GetCharacter("Xtek", "Shattered-Hand").Guild.Name);
         }
     }
 }

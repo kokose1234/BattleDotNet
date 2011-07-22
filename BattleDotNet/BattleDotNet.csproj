@@ -47,6 +47,8 @@
     <Compile Include="DynamicClient.cs" />
     <Compile Include="Objects\WoW\Character.cs" />
     <Compile Include="Objects\WoW\CharacterClassInfo.cs" />
+    <Compile Include="Objects\WoW\CharacterGuild.cs" />
+    <Compile Include="Objects\WoW\CharacterGuildEmblem.cs" />
     <Compile Include="Objects\WoW\RealmStatus.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

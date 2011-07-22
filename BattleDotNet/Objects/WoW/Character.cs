@@ -14,6 +14,9 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("class")]
         public CharacterClass Class { get; private set; }
 
+        [JsonProperty("guild")]
+        public CharacterGuild Guild { get; private set; }
+
         [JsonProperty("level")]
         public int Level { get; private set; }
 
@@ -66,5 +69,11 @@ namespace BattleDotNet.Objects.WoW
         BloodElf = 10,
         Draenei = 11,
         Worgen = 22
+    }
+
+    public enum CharacterGender
+    {
+        Male = 0,
+        Female = 1
     }
 }
