@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xunit;
+using System.Collections;
 
 namespace BattleDotNet.Tests
 {
@@ -11,8 +12,10 @@ namespace BattleDotNet.Tests
         [Fact]
         public void Test()
         {
-            WoWClient client = new WoWClient(region: ClientRegion.KR);
-            Console.WriteLine(client.GetRealmStatuses().Count());
+            dynamic client = new DynamicClient("wow");
+            dynamic x = client.Get("realm/status", realms: new[] { "test1", "test2" });
+
+            Console.WriteLine(((IEnumerable<dynamic>)x.realms).First().name);
         }
     }
 }

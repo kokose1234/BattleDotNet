@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Dynamic;
 
 namespace BattleDotNet
 {
-    public abstract class Client
+    public abstract class Client : DynamicObject
     {
         // This will help ensure the main constructor is used
         private Client()
