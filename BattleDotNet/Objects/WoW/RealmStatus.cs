@@ -11,6 +11,9 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("name")]
         public string Name { get; private set; }
 
+        [JsonProperty("status")]
+        public bool IsUp { get; private set; }
+
         [JsonProperty("queue")]
         public bool HasQueue { get; private set; }
 

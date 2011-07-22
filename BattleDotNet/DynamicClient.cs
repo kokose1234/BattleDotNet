@@ -17,25 +17,26 @@ namespace BattleDotNet
             return base.Get<dynamic>(path);
         }
 
-        public override bool TryInvokeMember(System.Dynamic.InvokeMemberBinder binder, object[] args, out object result)
-        {
-            string methodName = binder.Name;
-            var info = binder.CallInfo;
+        // TODO : Add dynamic member invocation support
+        //public override bool TryInvokeMember(System.Dynamic.InvokeMemberBinder binder, object[] args, out object result)
+        //{
+        //    string methodName = binder.Name;
+        //    var info = binder.CallInfo;
 
-            if (methodName == "Get" && args.Count() > 0 && (args[0] as string != null))
-            {
-                string path = args[0] as string;
+        //    if (methodName == "Get" && args.Count() > 0 && (args[0] as string != null))
+        //    {
+        //        string path = args[0] as string;
 
-                IDictionary<string, string> extraParameters = new Dictionary<string, string>();
-                for (int i = 1; i < args.Length; i++)
-                    extraParameters.Add(info.ArgumentNames[i - 1], args[i].ToString());
+        //        IDictionary<string, string> extraParameters = new Dictionary<string, string>();
+        //        for (int i = 1; i < args.Length; i++)
+        //            extraParameters.Add(info.ArgumentNames[i - 1], args[i].ToString());
 
-                dynamic dynamicResult = Get<dynamic>(path, extraParameters);
-                result = dynamicResult;
-                return true;
-            }
+        //        dynamic dynamicResult = Get<dynamic>(path, extraParameters);
+        //        result = dynamicResult;
+        //        return true;
+        //    }
 
-            return base.TryInvokeMember(binder, args, out result);
-        }
+        //    return base.TryInvokeMember(binder, args, out result);
+        //}
     }
 }

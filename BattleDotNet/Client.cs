@@ -6,7 +6,7 @@ using System.Dynamic;
 
 namespace BattleDotNet
 {
-    public abstract class Client : DynamicObject
+    public abstract class Client
     {
         // This will help ensure the main constructor is used
         private Client()
@@ -59,7 +59,7 @@ namespace BattleDotNet
                     path
                 );
 
-            if (parameters.Count() > 0)
+            if (parameters != null && parameters.Count() > 0)
                 url = string.Format("{0}?{1}", url, string.Join("&", parameters.Select(x => string.Format("{0}={1}", x.Key, x.Value)).ToArray()));
 
             return _requestManager.Get<T>(url);

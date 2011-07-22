@@ -24,7 +24,7 @@ namespace BattleDotNet
 
         public IEnumerable<RealmStatus> GetRealmStatuses(params string[] realms)
         {
-            return this.Get<RealmStatusData>("realm/status").Realms;
+            return this.Get<RealmStatusData>("realm/status", new Parameters { { "realms", string.Join(",", realms) } }).Realms;
         }
     }
 }
