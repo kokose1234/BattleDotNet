@@ -25,6 +25,9 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("name")]
         public string Name { get; private set; }
 
+        [JsonProperty("professions")]
+        public CharacterProfessions Professions { get; private set; }
+
         [JsonProperty("race")]
         public CharacterRace Race { get; private set; }
 

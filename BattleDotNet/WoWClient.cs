@@ -58,6 +58,7 @@ namespace BattleDotNet
         Items = 0x8,
         Reputation = 0x10,
         Titles = 0x20,
+        Professions = 0x40,
         All = 0x7FFFFFFF,
     }
 }

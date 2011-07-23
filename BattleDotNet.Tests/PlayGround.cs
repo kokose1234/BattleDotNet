@@ -13,10 +13,9 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            foreach (var title in client.GetCharacter("xtek", "shattered-hand", fields: CharacterFields.Titles).Titles)
+            foreach (var x in client.GetCharacter("xtek", "shattered-hand", fields: CharacterFields.Professions).Professions.Secondary)
             {
-
-                Console.WriteLine(title.FormattedName);
+                Console.WriteLine("{0} {1} {2}", x.Name, x.Rank, x.PercentComplete);
             }
         }
     }
