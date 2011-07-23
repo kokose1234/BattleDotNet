@@ -13,6 +13,60 @@ namespace BattleDotNet.Objects.WoW
 
         [JsonProperty("averageItemLevelEquipped")]
         public int AverageItemLevelEquipped { get; private set; }
+
+        [JsonProperty("head")]
+        public CharacterItem Head { get; private set; }
+
+        [JsonProperty("neck")]
+        public CharacterItem Neck { get; private set; }
+
+        [JsonProperty("shoulder")]
+        public CharacterItem Shoulder { get; private set; }
+
+        [JsonProperty("back")]
+        public CharacterItem Back { get; private set; }
+
+        [JsonProperty("chest")]
+        public CharacterItem Chest { get; private set; }
+
+        [JsonProperty("tabard")]
+        public CharacterItem Tabard { get; private set; }
+
+        [JsonProperty("wrist")]
+        public CharacterItem Wrist { get; private set; }
+
+        [JsonProperty("hands")]
+        public CharacterItem Hands { get; private set; }
+
+        [JsonProperty("waist")]
+        public CharacterItem Waist { get; private set; }
+
+        [JsonProperty("legs")]
+        public CharacterItem Legs { get; private set; }
+
+        [JsonProperty("feet")]
+        public CharacterItem Feet { get; private set; }
+
+        [JsonProperty("finger1")]
+        public CharacterItem Finger1 { get; private set; }
+
+        [JsonProperty("finger2")]
+        public CharacterItem Finger2 { get; private set; }
+
+        [JsonProperty("trinket1")]
+        public CharacterItem Trinket1 { get; private set; }
+
+        [JsonProperty("trinket2")]
+        public CharacterItem Trinket2 { get; private set; }
+
+        [JsonProperty("mainHand")]
+        public CharacterItem MainHand { get; private set; }
+
+        [JsonProperty("offHand")]
+        public CharacterItem OffHand { get; private set; }
+
+        [JsonProperty("ranged")]
+        public CharacterItem Ranged { get; private set; }
     }
 
     public class CharacterItem

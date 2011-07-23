@@ -55,6 +55,7 @@ namespace BattleDotNet
         Guild = 0x1,
         Stats = 0x2,
         Talents = 0x4,
+        Items = 0x8,
         All = 0x7FFFFFFF,
     }
 }

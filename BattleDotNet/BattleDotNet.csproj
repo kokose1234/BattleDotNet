@@ -52,6 +52,7 @@
     <Compile Include="Objects\WoW\CharacterClassInfo.cs" />
     <Compile Include="Objects\WoW\CharacterGuild.cs" />
     <Compile Include="Objects\WoW\CharacterGuildEmblem.cs" />
+    <Compile Include="Objects\WoW\CharacterItems.cs" />
     <Compile Include="Objects\WoW\CharacterStats.cs" />
     <Compile Include="Objects\WoW\CharacterTalents.cs" />
     <Compile Include="Objects\WoW\Guild.cs" />

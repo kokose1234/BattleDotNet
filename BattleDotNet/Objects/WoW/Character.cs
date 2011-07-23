@@ -15,6 +15,9 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("guild")]
         public CharacterGuild Guild { get; private set; }
 
+        [JsonProperty("items")]
+        public CharacterItems Items { get; private set; }
+
         [JsonProperty("level")]
         public int Level { get; private set; }
 
