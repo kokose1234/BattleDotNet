@@ -45,8 +45,11 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="DynamicClient.cs" />
+<<<<<<< HEAD
     <Compile Include="Extensions\StringExtensions.cs" />
+=======
     <Compile Include="GuildParameters.cs" />
+>>>>>>> 612c3af8c2cd775eae6aa1013c0330b712d73dcd
     <Compile Include="JsonConverters\JavaScriptTimeStampConverter.cs" />
     <Compile Include="Objects\WoW\Character.cs" />
     <Compile Include="Objects\WoW\CharacterClassInfo.cs" />
