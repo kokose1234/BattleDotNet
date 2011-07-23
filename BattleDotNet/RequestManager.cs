@@ -6,24 +6,30 @@ using System.Net;
 using System.Threading;
 using System.IO;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
+using BattleDotNet.Extensions;
 
 namespace BattleDotNet
 {
     public class RequestManager
     {
-        public RequestManager(string publicKey = null, string signature = null)
+        public RequestManager(string publicKey = null, string privateKey = null)
         {
-            if (string.IsNullOrWhiteSpace(publicKey) && !string.IsNullOrWhiteSpace(signature) ||
-                !string.IsNullOrWhiteSpace(publicKey) && string.IsNullOrWhiteSpace(signature))
-            {
-                throw new InvalidOperationException("Both Public Key and Signature need to be null or both specified.");
-            }
+            if (publicKey.IsNullOrWhiteSpace() && !privateKey.IsNullOrWhiteSpace())
+                throw new ArgumentException("Cannot specify public key without private key.");
+            else if (privateKey.IsNullOrWhiteSpace() && !publicKey.IsNullOrWhiteSpace())
+                throw new ArgumentNullException("Cannot specify private key without public key.");
 
             _publicKey = publicKey;
-            _signature = signature;
 
-            if (!string.IsNullOrWhiteSpace(_publicKey))
-                _bnetAuth = string.Format("BNET {0}:{1}", _publicKey, _signature);
+            if (!privateKey.IsNullOrWhiteSpace())
+                _privateKey = privateKey.FromHex();
+        }
+
+        private readonly byte[] _privateKey;
+        public byte[] PrivateKey
+        {
+            get { return _privateKey; }
         }
 
         private readonly string _publicKey;
@@ -32,21 +38,9 @@ namespace BattleDotNet
             get { return _publicKey; }
         }
 
-        private readonly string _signature;
-        public string Signature
-        {
-            get { return _signature; }
-        }
-
-        private readonly string _bnetAuth;
-        public string BNetAuth
-        {
-            get { return _bnetAuth; }
-        }
-
         public string GetContent(string url)
         {
-            if (string.IsNullOrWhiteSpace(url))
+            if (url.IsNullOrWhiteSpace())
                 throw new ArgumentNullException("url");
 
             HttpWebRequest webRequest = HttpWebRequest.Create(url) as HttpWebRequest;
@@ -65,9 +59,7 @@ namespace BattleDotNet
             // Give some information
             webRequest.UserAgent = "BattleDotNet C# Library | https://github.com/ChadMoran/BattleDotNet";
 
-            // Add application authorization
-            if (!string.IsNullOrWhiteSpace(BNetAuth))
-                webRequest.Headers.Add("Authorization", BNetAuth);
+            SetAuthentication(webRequest);
 
             using (HttpWebResponse webResponse = webRequest.GetResponse() as HttpWebResponse)
             {
@@ -76,6 +68,25 @@ namespace BattleDotNet
                     return reader.ReadToEnd();
                 }
             }
+        }
+
+        protected void SetAuthentication(HttpWebRequest request)
+        {
+            if (string.IsNullOrWhiteSpace(PublicKey))
+                return;
+
+            string path = request.RequestUri.AbsolutePath;
+            string verb = request.Method;
+            string date = request.Date.ToUniversalTime().ToString("r");
+
+            string valueToHash = string.Format("{0}\n{1}\n{2}\n", path, verb, date);
+
+            byte[] buffer = Encoding.UTF8.GetBytes(valueToHash);
+            HMACSHA1 hmac = new HMACSHA1(PrivateKey);
+            byte[] hash = hmac.ComputeHash(buffer);
+            string signature = Convert.ToBase64String(hash);
+
+            request.Headers["Authorization"] = string.Format("BNET {0}:{1}", PublicKey, signature);
         }
 
         public T Get<T>(string url)

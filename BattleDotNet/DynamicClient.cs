@@ -7,8 +7,8 @@ namespace BattleDotNet
 {
     public class DynamicClient : Client
     {
-        public DynamicClient(string path, ClientRegion? region = null, string publicKey = null, string signature = null)
-            : base(path, region, publicKey, signature)
+        public DynamicClient(string path, ClientRegion? region = null, string publicKey = null)
+            : base(path, region, publicKey)
         {
         }
 

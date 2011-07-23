@@ -9,8 +9,8 @@ namespace BattleDotNet
 {
     public class WoWClient : Client
     {
-        public WoWClient(ClientRegion? region = null, string publicKey = null, string signature = null)
-            : base("wow", region, publicKey, signature)
+        public WoWClient(ClientRegion? region = null, string publicKey = null, string privateKey = null)
+            : base("wow", region, publicKey, privateKey)
         {
         }
 
