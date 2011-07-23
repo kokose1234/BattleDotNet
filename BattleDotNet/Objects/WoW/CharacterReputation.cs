@@ -23,14 +23,17 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("standing")]
         public ReputationStanding Standing { get; private set; }
 
+        /// <summary>
+        /// Gets a value that indicates the percentage complete for this reputation (0-100)
+        /// </summary>
         public float PercentComplete
         {
             get
             {
-                if (Current == 0)
+                if (Max == 0)
                     return 0F;
 
-                return Max / (float)Current;
+                return ((float)Current / Max) * 100;
             }
         }
     }

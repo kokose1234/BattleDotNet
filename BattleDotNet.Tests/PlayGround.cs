@@ -13,7 +13,10 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetCharacter("xtek", "shattered-hand", fields: CharacterFields.Items).Items.MainHand.IconName);
+            foreach (var rep in client.GetCharacter("xtek", "shattered-hand", fields: CharacterFields.Reputation).Reputation)
+            {
+                Console.WriteLine(rep.Name + ": " + rep.Standing + "(" + rep.PercentComplete + ")");
+            }
         }
     }
 }

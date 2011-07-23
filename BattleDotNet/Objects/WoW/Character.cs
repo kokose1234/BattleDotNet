@@ -28,7 +28,7 @@ namespace BattleDotNet.Objects.WoW
         public CharacterRace Race { get; private set; }
 
         [JsonProperty("reputation")]
-        public CharacterReputation Reputation { get; private set; }
+        public IEnumerable<CharacterReputation> Reputation { get; private set; }
 
         [JsonProperty("stats")]
         public CharacterStats Stats { get; private set; }
