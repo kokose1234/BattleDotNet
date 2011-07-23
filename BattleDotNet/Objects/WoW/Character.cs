@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -38,6 +39,26 @@ namespace BattleDotNet.Objects.WoW
 
         [JsonProperty("talents")]
         public IEnumerable<CharacterTalents> Talents { get; private set; }
+
+        [JsonProperty("titles")]
+        internal IEnumerable<CharacterTitle> InternalTitles { get; private set; }
+
+        private bool _titlesProcessed = false;
+        public IEnumerable<CharacterTitle> Titles
+        {
+            get
+            {
+                if (!_titlesProcessed)
+                {
+                    foreach (var title in InternalTitles)
+                        title.SetCharacterName(this.Name);
+
+                    _titlesProcessed = true;
+                }
+
+                return InternalTitles;
+            }
+        }
 
         [JsonProperty("thumbnail")]
         public string ThumbnailUrl { get; private set; }

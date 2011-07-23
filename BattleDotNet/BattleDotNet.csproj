@@ -56,6 +56,7 @@
     <Compile Include="Objects\WoW\CharacterReputation.cs" />
     <Compile Include="Objects\WoW\CharacterStats.cs" />
     <Compile Include="Objects\WoW\CharacterTalents.cs" />
+    <Compile Include="Objects\WoW\CharacterTitle.cs" />
     <Compile Include="Objects\WoW\Guild.cs" />
     <Compile Include="Objects\WoW\GuildMember.cs" />
     <Compile Include="Objects\WoW\RealmStatus.cs" />
