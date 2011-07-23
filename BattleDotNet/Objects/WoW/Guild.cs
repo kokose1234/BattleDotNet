@@ -30,7 +30,8 @@ namespace BattleDotNet.Objects.WoW
         #endregion
 
         #region Optional Member Properties
-        
+        [JsonProperty("members")]
+        public IEnumerable<GuildMember> Members { get; private set; }
         #endregion
 
         #region Optional Achievement Properties
