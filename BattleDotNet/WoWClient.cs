@@ -37,9 +37,14 @@ namespace BattleDotNet
             return this.Get<Character>(string.Format("character/{0}/{1}", realm, name));
         }
 
-        public Guild GetGuild(string name, string realm)
+        public Guild GetGuild(string name, string realm, GuildRequestFields parms = GuildRequestFields.None)
         {
-            return this.Get<Guild>(string.Format("guild/{0}/{1}", realm, name));
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentNullException("name");
+            if (string.IsNullOrWhiteSpace(realm))
+                throw new ArgumentNullException("realm");
+
+            return this.Get<Guild>(string.Format("guild/{0}/{1}", realm, name), new GuildParameters(parms));
         }
     }
 }
