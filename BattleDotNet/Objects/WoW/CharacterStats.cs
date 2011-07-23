@@ -36,19 +36,19 @@ namespace BattleDotNet.Objects.WoW
         public int RangedAttackPower { get; private set; }
 
         [JsonProperty("mastery")]
-        public double Mastery { get; private set; }
+        public float Mastery { get; private set; }
 
         [JsonProperty("masteryRating")]
         public int MasteryRating { get; private set; }
 
         [JsonProperty("crit")]
-        public double Crit { get; private set; }
+        public float Crit { get; private set; }
 
         [JsonProperty("critRating")]
         public int CritRating { get; private set; }
 
         [JsonProperty("hitPercent")]
-        public double HitPercent { get; private set; }
+        public float HitPercent { get; private set; }
 
         [JsonProperty("hitRating")]
         public int HitRating { get; private set; }
@@ -66,13 +66,13 @@ namespace BattleDotNet.Objects.WoW
         public int SpellPen { get; private set; }
 
         [JsonProperty("spellCrit")]
-        public double SpellCrit { get; private set; }
+        public float SpellCrit { get; private set; }
 
         [JsonProperty("spellCritRating")]
         public int SpellCritRating { get; private set; }
 
         [JsonProperty("spellHitPercent")]
-        public double SpellHitPercent { get; private set; }
+        public float SpellHitPercent { get; private set; }
 
         [JsonProperty("spellHitRating")]
         public int SpellHitRating { get; private set; }
@@ -87,19 +87,19 @@ namespace BattleDotNet.Objects.WoW
         public int Armor { get; private set; }
 
         [JsonProperty("dodge")]
-        public double Dodge { get; private set; }
+        public float Dodge { get; private set; }
 
         [JsonProperty("dodgeRating")]
         public int DodgeRating { get; private set; }
 
         [JsonProperty("parry")]
-        public double Parry { get; private set; }
+        public float Parry { get; private set; }
 
         [JsonProperty("parryRating")]
         public int ParryRating { get; private set; }
 
         [JsonProperty("block")]
-        public double Block { get; private set; }
+        public float Block { get; private set; }
 
         [JsonProperty("blockRating")]
         public int BlockRating { get; private set; }
@@ -114,13 +114,13 @@ namespace BattleDotNet.Objects.WoW
         public int MainHandDamageMax { get; private set; }
 
         [JsonProperty("mainHandSpeed")]
-        public double MainHandSpeed { get; private set; }
+        public float MainHandSpeed { get; private set; }
 
         [JsonProperty("mainHandDps")]
-        public double MainHandDps { get; private set; }
+        public float MainHandDps { get; private set; }
 
         [JsonProperty("mainHandExpertise")]
-        public double MainHandExpertise { get; private set; }
+        public float MainHandExpertise { get; private set; }
 
         [JsonProperty("offHandDmgMin")]
         public int OffHandDamageMin { get; private set; }
@@ -129,13 +129,13 @@ namespace BattleDotNet.Objects.WoW
         public int OffHandDamageMax { get; private set; }
 
         [JsonProperty("offHandSpeed")]
-        public double OffHandSpeed { get; private set; }
+        public float OffHandSpeed { get; private set; }
 
         [JsonProperty("offHandDps")]
-        public double OffHandDps { get; private set; }
+        public float OffHandDps { get; private set; }
 
         [JsonProperty("offHandExpertise")]
-        public double OffHandExpertise { get; private set; }
+        public float OffHandExpertise { get; private set; }
 
         [JsonProperty("rangedDmgMin")]
         public int RangedDamageMin { get; private set; }
@@ -144,19 +144,19 @@ namespace BattleDotNet.Objects.WoW
         public int RangedDamageMax { get; private set; }
 
         [JsonProperty("rangedSpeed")]
-        public double RangedSpeed { get; private set; }
+        public float RangedSpeed { get; private set; }
 
         [JsonProperty("rangedDps")]
-        public double RangedDps { get; private set; }
+        public float RangedDps { get; private set; }
 
         [JsonProperty("rangedCrit")]
-        public double RangedCrit { get; private set; }
+        public float RangedCrit { get; private set; }
 
         [JsonProperty("rangedCritRating")]
         public int RangedCritRating { get; private set; }
 
         [JsonProperty("rangedHitPercent")]
-        public double RangedHitPercent { get; private set; }
+        public float RangedHitPercent { get; private set; }
 
         [JsonProperty("rangedHitRating")]
         public int RangedHitRating { get; private set; }

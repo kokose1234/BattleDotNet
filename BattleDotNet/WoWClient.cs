@@ -56,6 +56,7 @@ namespace BattleDotNet
         Stats = 0x2,
         Talents = 0x4,
         Items = 0x8,
+        Reputation = 0x10,
         All = 0x7FFFFFFF,
     }
 }
