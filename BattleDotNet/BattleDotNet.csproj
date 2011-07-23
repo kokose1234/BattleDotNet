@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="DynamicClient.cs" />
+    <Compile Include="JsonConverters\JavaScriptTimeStampConverter.cs" />
     <Compile Include="Objects\WoW\Character.cs" />
     <Compile Include="Objects\WoW\CharacterClassInfo.cs" />
     <Compile Include="Objects\WoW\CharacterGuild.cs" />

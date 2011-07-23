@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using BattleDotNet.JsonConverters;
 
 namespace BattleDotNet.Objects.WoW
 {
     public class Guild
     {
         #region Core Properties
+        [JsonProperty("lastModified")]
+
+        [JsonConverter(typeof(JavaScriptTimeStampConverter))]
+        public DateTime LastModified { get; private set; }
+
         [JsonProperty("achievementPoints")]
         public int AchievementPoints { get; private set; }
 
@@ -23,7 +30,7 @@ namespace BattleDotNet.Objects.WoW
         #endregion
 
         #region Optional Member Properties
-
+        
         #endregion
 
         #region Optional Achievement Properties

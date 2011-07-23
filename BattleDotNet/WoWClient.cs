@@ -31,5 +31,10 @@ namespace BattleDotNet
         {
             return this.Get<Character>(string.Format("character/{0}/{1}", realm, name));
         }
+
+        public Guild GetGuild(string name, string realm)
+        {
+            return this.Get<Guild>(string.Format("guild/{0}/{1}", realm, name));
+        }
     }
 }

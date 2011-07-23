@@ -142,7 +142,7 @@ namespace BattleDotNet.Objects.WoW
 
         public static CharacterClassInfo FromCharacterClass(CharacterClass characterClass)
         {
-            CharacterClassInfo info;
+            CharacterClassInfo info = Warrior;
 
             switch (characterClass)
             {
@@ -166,7 +166,7 @@ namespace BattleDotNet.Objects.WoW
                     info = Paladin;
                     break;
 
-                case CharacterClass.Priest;
+                case CharacterClass.Priest:
                     info = Priest;
                     break;
 
@@ -182,9 +182,9 @@ namespace BattleDotNet.Objects.WoW
                     info = Warlock;
                     break;
 
-                case CharacterClass.Warrior:
-                    info = Warrior;
-                    break;
+                //case CharacterClass.Warrior:
+                //    info = Warrior;
+                //    break;
             }
 
             return info;
