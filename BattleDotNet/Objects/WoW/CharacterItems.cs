@@ -84,6 +84,33 @@ namespace BattleDotNet.Objects.WoW
         public ItemQuality Quality { get; private set; }
     }
 
+    public class CharacterItemTooltip
+    {
+        [JsonProperty("enchant")]
+        public int? EnchandID { get; private set; }
+
+        [JsonProperty("gem0")]
+        public int? Gem1ID { get; private set; }
+
+        [JsonProperty("gem1")]
+        public int? Gem2ID { get; private set; }
+
+        [JsonProperty("gem2")]
+        public int? Gem3ID { get; private set; }
+
+        [JsonProperty("gem3")]
+        public int? Gem4ID { get; private set; }
+
+        [JsonProperty("extraSocket")]
+        public bool HasExtraSocket { get; private set; }
+
+        [JsonProperty("reforge")]
+        public int? ReforgeID { get; private set; }
+
+        [JsonProperty("set")]
+        public IEnumerable<int> SetItemIDs { get; private set; }
+    }
+
     public enum ItemQuality
     {
         /// <summary>
