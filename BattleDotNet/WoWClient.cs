@@ -29,6 +29,11 @@ namespace BattleDotNet
 
         public Character GetCharacter(string name, string realm)
         {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentNullException("name");
+            if (string.IsNullOrWhiteSpace(realm))
+                throw new ArgumentNullException("realm");
+
             return this.Get<Character>(string.Format("character/{0}/{1}", realm, name));
         }
 

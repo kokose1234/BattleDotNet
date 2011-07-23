@@ -12,13 +12,8 @@ namespace BattleDotNet.Tests
         [Fact]
         public void Test()
         {
-            //dynamic client = new DynamicClient("wow");
-            //dynamic x = client.Get("realm/status", realms: string.Join(",", new[] { "Shattered-Hand", "Lightbringer" }));
-
-            //Console.WriteLine(((IEnumerable<dynamic>)x.realms).FirstOrDefault().ToString());
-
             var client = new WoWClient();
-            Console.WriteLine(client.GetCharacter("Xtek", "Shattered-Hand").Guild.Name);
+            Console.WriteLine(client.GetCharacter("xteK", "shattered-hand").Stats.MainHandDps);
         }
     }
 }

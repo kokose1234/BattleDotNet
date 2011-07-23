@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Newtonsoft.Json;
 
 namespace BattleDotNet.Objects.WoW
@@ -25,6 +22,9 @@ namespace BattleDotNet.Objects.WoW
 
         [JsonProperty("race")]
         public CharacterRace Race { get; private set; }
+
+        [JsonProperty("stats")]
+        public CharacterStats Stats { get; private set; }
 
         [JsonProperty("realm")]
         public string Realm { get; private set; }
