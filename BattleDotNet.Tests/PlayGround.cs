@@ -13,7 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetCharacter("xteK", "shattered-hand").Stats.MainHandDps);
+            Console.WriteLine(client.GetCharacter("xtek", "shattered-hand", fields: CharacterFields.All));
         }
     }
 }

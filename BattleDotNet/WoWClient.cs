@@ -27,19 +27,28 @@ namespace BattleDotNet
             return this.Get<RealmStatusData>("realm/status", new Parameters { { "realms", string.Join(",", realms) } }).Realms;
         }
 
-        public Character GetCharacter(string name, string realm)
+        public Character GetCharacter(string name, string realm, CharacterFields fields = CharacterFields.None)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentNullException("name");
             if (string.IsNullOrWhiteSpace(realm))
                 throw new ArgumentNullException("realm");
 
-            return this.Get<Character>(string.Format("character/{0}/{1}", realm, name));
+            return this.Get<Character>(string.Format("character/{0}/{1}", realm, name), fields: fields);
         }
 
         public Guild GetGuild(string name, string realm)
         {
             return this.Get<Guild>(string.Format("guild/{0}/{1}", realm, name));
         }
+    }
+
+    [Flags]
+    public enum CharacterFields
+    {
+        None = 0x0,
+        Guild = 0x1,
+        Stats = 0x2,
+        All = 0x7FFFFFFF,
     }
 }

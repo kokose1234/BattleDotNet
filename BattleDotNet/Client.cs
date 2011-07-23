@@ -20,7 +20,7 @@ namespace BattleDotNet
 
             // Defaults
             Region = region ?? ClientRegion.US;
-            UseHttps = true;
+            UseHttps = false;
 
             _baseUrl = NormalizePath(baseUrl);
             _requestManager = new RequestManager(publicKey, signature);
@@ -46,7 +46,22 @@ namespace BattleDotNet
 
         public ClientRegion Region { get; private set; }
 
-        protected T Get<T>(string path, IEnumerable<KeyValuePair<string, string>> parameters = null, ClientRegion? region = null)
+        protected string GetFieldsString(Enum flagsEnum)
+        {
+            int flagsValue = Convert.ToInt32(flagsEnum);
+
+            var values =
+                Enum.GetValues(flagsEnum.GetType()) // get all possible values
+                    .Cast<int>() // we're assuming this enum is of type int
+                    .Where(x => x == (flagsValue & x)) // only pull out values in the flags passed in
+                    .Except(new[] { 0x0, 0x7FFFFFFF }) // don't include None and All values
+                    .Select(x => Enum.GetName(flagsEnum.GetType(), x).ToString()) // ???
+                    .ToArray(); // profit!
+
+            return string.Join(",", values).ToLowerInvariant();
+        }
+
+        protected T Get<T>(string path, IEnumerable<KeyValuePair<string, string>> parameters = null, ClientRegion? region = null, Enum fields = null)
         {
             if (path == null)
                 throw new ArgumentNullException(path);
@@ -59,6 +74,15 @@ namespace BattleDotNet
                     path
                 );
 
+            // Fields were passed, need to ensure parameters isn't null since we're going to add to it
+            if (parameters == null && fields != null)
+                parameters = new Dictionary<string, string>();
+
+            // Add fields to the parameters
+            if (fields != null)
+                parameters = parameters.Concat(new Parameters { { "fields", GetFieldsString(fields) } });
+
+            // Add parameters onto the url
             if (parameters != null && parameters.Count() > 0)
                 url = string.Format("{0}?{1}", url, string.Join("&", parameters.Select(x => string.Format("{0}={1}", x.Key, x.Value)).ToArray()));
 
