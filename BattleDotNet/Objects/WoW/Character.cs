@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace BattleDotNet.Objects.WoW
 {
@@ -28,6 +29,9 @@ namespace BattleDotNet.Objects.WoW
 
         [JsonProperty("realm")]
         public string Realm { get; private set; }
+
+        [JsonProperty("talents")]
+        public IEnumerable<CharacterTalents> Talents { get; private set; }
 
         [JsonProperty("thumbnail")]
         public string ThumbnailUrl { get; private set; }
