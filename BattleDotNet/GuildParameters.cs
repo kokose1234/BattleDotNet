@@ -5,9 +5,9 @@ using System.Text;
 
 namespace BattleDotNet
 {
-    public class GuildParameters : Parameters
+    internal class GuildParameters : Parameters
     {
-        public GuildParameters(GuildRequestFields parms)
+        internal GuildParameters(GuildRequestFields parms)
         {
             if (parms != GuildRequestFields.None)
             {
