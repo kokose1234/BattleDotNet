@@ -40,6 +40,9 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("professions")]
         public CharacterProfessions Professions { get; private set; }
 
+        [JsonProperty("progression")]
+        public CharacterProgression Progression { get; private set; }
+
         [JsonProperty("race")]
         public CharacterRace Race { get; private set; }
 

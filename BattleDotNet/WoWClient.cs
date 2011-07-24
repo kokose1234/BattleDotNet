@@ -52,6 +52,7 @@ namespace BattleDotNet
     public enum CharacterFields
     {
         None = 0x0,
+
         Guild = 0x1,
         Stats = 0x2,
         Talents = 0x4,
@@ -63,6 +64,8 @@ namespace BattleDotNet
         Companions = 0x100,
         Mounts = 0x200,
         Pets = 0x400,
+        Achievements = 0x800,
+        Progression = 0x1000,
 
         All = 0x7FFFFFFF,
     }
