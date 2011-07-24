@@ -72,6 +72,7 @@
     <Compile Include="Objects\WoW\GuildMember.cs" />
     <Compile Include="Objects\WoW\RealmStatus.cs" />
     <Compile Include="Parameters.cs" />
+    <Compile Include="Performance\DebugTimer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestManager.cs" />
     <Compile Include="WoWClient.cs" />
