@@ -24,9 +24,11 @@ namespace BattleDotNet.Objects.WoW
         internal IEnumerable<int> CriteriaQuantities { get; private set; }
 
         [JsonProperty("criteriaTimestamp")]
-        internal IEnumerable<long> CriteriaTimestamps { get; private set; }
+        [JsonConverter(typeof(IEnumerableJavaScriptTimeStampConverter))]
+        public IEnumerable<DateTime> CriteriaDates { get; private set; }
 
         [JsonProperty("criteriaCreated")]
-        internal IEnumerable<long> CriteriaCreated { get; private set; }
+        [JsonConverter(typeof(IEnumerableJavaScriptTimeStampConverter))]
+        public IEnumerable<DateTime> CriteriaStartDates { get; private set; }
     }
 }
