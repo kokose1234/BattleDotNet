@@ -7,6 +7,9 @@ namespace BattleDotNet.Objects.WoW
 {
     public class Character
     {
+        [JsonProperty("achievements")]
+        public CharacterAchievements Achievements { get; private set; }
+
         [JsonProperty("achievementPoints")]
         public int AchievementPoints { get; private set; }
 
