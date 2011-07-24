@@ -18,7 +18,7 @@ namespace BattleDotNet.JsonConverters
 
         public override DateTime Create(Type objectType)
         {
-            return DateTime.Now;
+            return DateTime.UtcNow;
         }
     }
 }
