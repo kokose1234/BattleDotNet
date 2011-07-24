@@ -25,6 +25,9 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("name")]
         public string Name { get; private set; }
 
+        [JsonProperty("realm")]
+        public string Realm { get; private set; }
+
         [JsonProperty("side")]
         public CharacterFaction Side { get; private set; }
         #endregion
@@ -75,6 +78,14 @@ namespace BattleDotNet.Objects.WoW
         }
 
         #endregion
+
+        public override string ToString()
+        {
+            if (!string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Realm))
+                return string.Format("{0} - {1}", Name, Realm);
+
+            return base.ToString();
+        }
 
     }
 
