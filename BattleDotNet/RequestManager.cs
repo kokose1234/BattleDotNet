@@ -62,11 +62,14 @@ namespace BattleDotNet
 
             SetAuthentication(webRequest);
 
-            using (HttpWebResponse webResponse = webRequest.GetResponse() as HttpWebResponse)
+            using (DebugTimer.Start(string.Format("Requesting {0}", url)))
             {
-                using (StreamReader reader = new StreamReader(webResponse.GetResponseStream()))
+                using (HttpWebResponse webResponse = webRequest.GetResponse() as HttpWebResponse)
                 {
-                    return reader.ReadToEnd();
+                    using (StreamReader reader = new StreamReader(webResponse.GetResponseStream()))
+                    {
+                        return reader.ReadToEnd();
+                    }
                 }
             }
         }
