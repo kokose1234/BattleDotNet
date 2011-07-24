@@ -12,7 +12,6 @@ namespace BattleDotNet.Objects.WoW
     {
         #region Core Properties
         [JsonProperty("lastModified")]
-
         [JsonConverter(typeof(JavaScriptTimeStampConverter))]
         public DateTime LastModified { get; private set; }
 
