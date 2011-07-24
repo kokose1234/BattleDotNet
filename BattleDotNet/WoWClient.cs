@@ -37,14 +37,14 @@ namespace BattleDotNet
             return this.Get<Character>(string.Format("character/{0}/{1}", realm, name), fields: fields);
         }
 
-        public Guild GetGuild(string name, string realm, GuildRequestFields parms = GuildRequestFields.None)
+        public Guild GetGuild(string name, string realm, GuildFields fields = GuildFields.None)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentNullException("name");
             if (string.IsNullOrWhiteSpace(realm))
                 throw new ArgumentNullException("realm");
 
-            return this.Get<Guild>(string.Format("guild/{0}/{1}", realm, name), new GuildParameters(parms));
+            return this.Get<Guild>(string.Format("guild/{0}/{1}", realm, name), fields: fields);
         }
     }
 
@@ -68,5 +68,15 @@ namespace BattleDotNet
         Progression = 0x1000,
 
         All = 0x7FFFFFFF,
+    }
+
+    [Flags]
+    public enum GuildFields
+    {
+        None = 0x0,
+        Members = 0x1,
+        Achievements = 0x2,
+
+        All = 0x7FFFFFFF
     }
 }
