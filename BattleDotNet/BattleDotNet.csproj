@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="DynamicClient.cs" />
+    <Compile Include="Extensions\Int64Extensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="JsonConverters\JavaScriptTimeStampConverter.cs" />
     <Compile Include="Objects\WoW\Character.cs" />
@@ -59,6 +60,8 @@
     <Compile Include="Objects\WoW\CharacterStats.cs" />
     <Compile Include="Objects\WoW\CharacterTalents.cs" />
     <Compile Include="Objects\WoW\CharacterTitle.cs" />
+    <Compile Include="Objects\WoW\GuildCompletedAchievement.cs" />
+    <Compile Include="Objects\WoW\GuildCompletedAchievementCollection.cs" />
     <Compile Include="Objects\WoW\Guild.cs" />
     <Compile Include="Objects\WoW\GuildMember.cs" />
     <Compile Include="Objects\WoW\RealmStatus.cs" />
