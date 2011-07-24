@@ -13,7 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetCharacter("xtek", "shattered-hand", fields: CharacterFields.Appearance).Appearance.FeatureVariation);
+            Console.WriteLine(client.GetCharacter("huntr", "shattered-hand", fields: CharacterFields.Pets).Pets.First().Name);
         }
     }
 }

@@ -60,6 +60,10 @@ namespace BattleDotNet
         Titles = 0x20,
         Professions = 0x40,
         Appearance = 0x80,
+        Companions = 0x100,
+        Mounts = 0x200,
+        Pets = 0x400,
+
         All = 0x7FFFFFFF,
     }
 }

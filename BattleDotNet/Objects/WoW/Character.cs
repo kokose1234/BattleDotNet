@@ -16,6 +16,9 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("class")]
         public CharacterClass Class { get; private set; }
 
+        [JsonProperty("companions")]
+        public IEnumerable<int> CompanionIDs { get; private set; }
+
         [JsonProperty("guild")]
         public CharacterGuild Guild { get; private set; }
 
@@ -25,8 +28,14 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("level")]
         public int Level { get; private set; }
 
+        [JsonProperty("mounts")]
+        public IEnumerable<int> MountIDs { get; private set; }
+
         [JsonProperty("name")]
         public string Name { get; private set; }
+
+        [JsonProperty("pets")]
+        public IEnumerable<CharacterPet> Pets { get; private set; }
 
         [JsonProperty("professions")]
         public CharacterProfessions Professions { get; private set; }
