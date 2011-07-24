@@ -46,7 +46,6 @@
     <Compile Include="Client.cs" />
     <Compile Include="DynamicClient.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="GuildParameters.cs" />
     <Compile Include="JsonConverters\JavaScriptTimeStampConverter.cs" />
     <Compile Include="Objects\WoW\Character.cs" />
     <Compile Include="Objects\WoW\CharacterAppearance.cs" />
