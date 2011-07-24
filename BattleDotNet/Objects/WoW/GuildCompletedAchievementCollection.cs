@@ -17,7 +17,7 @@ namespace BattleDotNet.Objects.WoW
         internal GuildCompletedAchievementCollection(IEnumerable<int> ids, IEnumerable<long> timestamps)
             : this(ids, timestamps.Select(t => t.ConvertJavaScriptTimestamp()))
         {
-
+            //
         }
 
         internal GuildCompletedAchievementCollection(IEnumerable<int> ids, IEnumerable<DateTime> dates)

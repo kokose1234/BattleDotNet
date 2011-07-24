@@ -12,7 +12,7 @@ namespace BattleDotNet.Objects.WoW
     {
         [JsonProperty("achievementsCompleted")]
         internal IEnumerable<int> CompletedAchievementIDs { get; private set; }
-
+//
         [JsonProperty("achievementsCompletedTimestamp")]
         [JsonConverter(typeof(IEnumerableJavaScriptTimeStampConverter))]
         public IEnumerable<DateTime> CompletedAchievementDates { get; private set; }
