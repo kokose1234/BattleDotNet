@@ -36,7 +36,7 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("side")]
         public GuildFaction Side { get; private set; }
         #endregion
-        //
+
         #region Optional Member Properties
         [JsonProperty("members")]
         public IEnumerable<GuildMember> Members { get; private set; }
