@@ -15,7 +15,6 @@ namespace BattleDotNet.Objects.WoW
         #region Core Properties
         [JsonProperty("lastModified")]
         internal long LastModifiedTimestamp { get; private set; }
-
         public DateTime LastModifiedDate
         {
             get { return LastModifiedTimestamp.ConvertJavaScriptTimestamp(); }
