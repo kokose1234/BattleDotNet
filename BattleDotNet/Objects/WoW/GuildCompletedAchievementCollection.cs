@@ -21,6 +21,7 @@ namespace BattleDotNet.Objects.WoW
         }
 
 
+
         #region IEnumerable<GuildAchievement> Members
 
         public IEnumerator<GuildCompletedAchievement> GetEnumerator()
