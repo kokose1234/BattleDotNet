@@ -8,6 +8,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 using BattleDotNet.Extensions;
+using BattleDotNet.Performance;
 
 namespace BattleDotNet
 {
@@ -95,7 +96,11 @@ namespace BattleDotNet
                 throw new ArgumentNullException("url");
 
             string content = GetContent(url);
-            return JsonConvert.DeserializeObject<T>(content);
+
+            using (DebugTimer.Start(string.Format("Deserializing")))
+            {
+                return JsonConvert.DeserializeObject<T>(content);
+            }
         }
     }
 }
