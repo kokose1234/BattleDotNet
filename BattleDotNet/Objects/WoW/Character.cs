@@ -10,6 +10,9 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("achievementPoints")]
         public int AchievementPoints { get; private set; }
 
+        [JsonProperty("appearance")]
+        public CharacterAppearance Appearance { get; private set; }
+
         [JsonProperty("class")]
         public CharacterClass Class { get; private set; }
 
