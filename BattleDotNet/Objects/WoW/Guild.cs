@@ -35,7 +35,44 @@ namespace BattleDotNet.Objects.WoW
         #endregion
 
         #region Optional Achievement Properties
+        [JsonProperty("achievements")]
+        private GuildAchievementData Achievements;
+        #endregion
 
+        #region Custom Achievement API (because the default sucks)
+        public IEnumerable<GuildCompletedAchievement> CompletedAchievements
+        {
+            get 
+            { 
+                return new GuildCompletedAchievementCollection(
+                    Achievements.AchievementsCompleted, 
+                    Achievements.AchievementsCompletedTimestamp).ToArray(); 
+            }
+        }
+        #endregion
+
+        #region Private Types
+        private class GuildAchievementData
+        {
+            [JsonProperty("achievementsCompleted")]
+            internal IEnumerable<int> AchievementsCompleted { get; private set; }
+
+            [JsonProperty("achievementsCompletedTimestamp")]
+            internal IEnumerable<long> AchievementsCompletedTimestamp { get; private set; }
+
+            [JsonProperty("criteria")]
+            internal IEnumerable<int> Criteria { get; private set; }
+
+            [JsonProperty("criteriaQuantity")]
+            internal IEnumerable<int> CriteriaQuantity { get; private set; }
+
+            [JsonProperty("criteriaTimestamp")]
+            internal IEnumerable<long> CriteriaTimestamp { get; private set; }
+
+            [JsonProperty("criteriaCreated")]
+            internal IEnumerable<long> CriteriaCreated { get; private set; }
+
+        }
 
         #endregion
 
