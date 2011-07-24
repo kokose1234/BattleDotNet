@@ -15,11 +15,16 @@ namespace BattleDotNet.Objects.WoW
         private List<DateTime> Timestamps = null;
 
         internal GuildCompletedAchievementCollection(IEnumerable<int> ids, IEnumerable<long> timestamps)
+            : this(ids, timestamps.Select(t => t.ConvertJavaScriptTimestamp()))
         {
-            Ids = new List<int>(ids);
-            Timestamps = timestamps.Select(t => t.ConvertJavaScriptTimestamp()).ToList();
+
         }
 
+        internal GuildCompletedAchievementCollection(IEnumerable<int> ids, IEnumerable<DateTime> dates)
+        {
+            Ids = new List<int>(ids);
+            Timestamps = new List<DateTime>(dates);
+        }
 
 
         #region IEnumerable<GuildAchievement> Members
