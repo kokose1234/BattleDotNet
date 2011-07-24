@@ -8,13 +8,18 @@ using BattleDotNet.JsonConverters;
 
 namespace BattleDotNet.Objects.WoW
 {
+    using Extensions;
+
     public class Guild
     {
         #region Core Properties
         [JsonProperty("lastModified")]
+        internal long LastModifiedTimestamp { get; private set; }
 
-        [JsonConverter(typeof(JavaScriptTimeStampConverter))]
-        public DateTime LastModified { get; private set; }
+        public DateTime LastModifiedDate
+        {
+            get { return LastModifiedTimestamp.ConvertJavaScriptTimestamp(); }
+        }
 
         [JsonProperty("achievementPoints")]
         public int AchievementPoints { get; private set; }
@@ -29,7 +34,7 @@ namespace BattleDotNet.Objects.WoW
         public string Realm { get; private set; }
 
         [JsonProperty("side")]
-        public CharacterFaction Side { get; private set; }
+        public GuildFaction Side { get; private set; }
         #endregion
 
         #region Optional Member Properties
@@ -89,7 +94,7 @@ namespace BattleDotNet.Objects.WoW
 
     }
 
-    public enum CharacterFaction
+    public enum GuildFaction
     {
         Alliance,
         Horde
