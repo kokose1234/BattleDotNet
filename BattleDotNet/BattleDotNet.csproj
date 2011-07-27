@@ -67,8 +67,7 @@
     <Compile Include="Objects\WoW\CharacterTitle.cs" />
     <Compile Include="Objects\WoW\GuildAchievements.cs" />
     <Compile Include="Objects\WoW\GuildCharacter.cs" />
-    <Compile Include="Objects\WoW\GuildCompletedAchievement.cs" />
-    <Compile Include="Objects\WoW\GuildCompletedAchievementCollection.cs" />
+    <Compile Include="Objects\WoW\GuildAchievement.cs" />
     <Compile Include="Objects\WoW\Guild.cs" />
     <Compile Include="Objects\WoW\GuildMember.cs" />
     <Compile Include="Objects\WoW\RealmStatus.cs" />
