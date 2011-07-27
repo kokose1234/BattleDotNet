@@ -50,6 +50,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="JsonConverters\IEnumerableJavaScriptTimeStampConverter.cs" />
     <Compile Include="JsonConverters\JavaScriptTimeStampConverter.cs" />
+    <Compile Include="Objects\WoW\CharacterAchievement.cs" />
     <Compile Include="Objects\WoW\CharacterAchievements.cs" />
     <Compile Include="Objects\WoW\Character.cs" />
     <Compile Include="Objects\WoW\CharacterAppearance.cs" />

@@ -10,6 +10,31 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("achievements")]
         public CharacterAchievements Achievements { get; private set; }
 
+        private IEnumerable<CharacterAchievement> _completedAchievements;
+        public IEnumerable<CharacterAchievement> CompletedAchievements
+        {
+            get
+            {
+                if (Achievements == null)
+                    return Enumerable.Empty<CharacterAchievement>();
+
+                if (_completedAchievements == null)
+                {
+                    int[] ids = Achievements.CompletedAchievementIDs.ToArray();
+                    DateTime[] dates = Achievements.CompletedAchievementDates.ToArray();
+
+                    HashSet<CharacterAchievement> completedAchievements = new HashSet<CharacterAchievement>();
+                    for (int i = 0; i < ids.Length; i++)
+                    {
+                        completedAchievements.Add(new CharacterAchievement(ids[i], dates[i]));
+                    }
+                    _completedAchievements = completedAchievements;
+                }
+
+                return _completedAchievements;
+            }
+        }
+
         [JsonProperty("achievementPoints")]
         public int AchievementPoints { get; private set; }
 
