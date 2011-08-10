@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Security.Cryptography;
 using BattleDotNet.Extensions;
 using BattleDotNet.Performance;
+using BattleDotNet.Utilities;
 
 namespace BattleDotNet
 {
@@ -24,7 +25,7 @@ namespace BattleDotNet
             _publicKey = publicKey;
 
             if (!privateKey.IsNullOrWhiteSpace())
-                _privateKey = privateKey.FromHex();
+                _privateKey = Encoding.UTF8.GetBytes(privateKey);
         }
 
         private readonly byte[] _privateKey;
@@ -38,6 +39,14 @@ namespace BattleDotNet
         {
             get { return _publicKey; }
         }
+
+		protected DateTime CurrentUTC
+		{
+			get
+			{
+				return DateTime.UtcNow.AddMilliseconds(BattleNetTime.ServerTimeDiff);
+			}
+		}
 
         public string GetContent(string url)
         {
@@ -81,9 +90,10 @@ namespace BattleDotNet
 
             string path = request.RequestUri.AbsolutePath;
             string verb = request.Method;
-            string date = request.Date.ToUniversalTime().ToString("r");
+			DateTime current = this.CurrentUTC;
+            string date = current.ToString("r");
 
-            string valueToHash = string.Format("{0}\n{1}\n{2}\n", path, verb, date);
+            string valueToHash = string.Format("{0}\n{1}\n{2}\n", verb, date, path);
 
             byte[] buffer = Encoding.UTF8.GetBytes(valueToHash);
             HMACSHA1 hmac = new HMACSHA1(PrivateKey);
@@ -91,6 +101,7 @@ namespace BattleDotNet
             string signature = Convert.ToBase64String(hash);
 
             request.Headers["Authorization"] = string.Format("BNET {0}:{1}", PublicKey, signature);
+			request.Date = current;
         }
 
         public T Get<T>(string url)

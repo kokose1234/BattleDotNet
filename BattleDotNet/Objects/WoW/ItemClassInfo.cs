@@ -8,13 +8,13 @@ namespace BattleDotNet.Objects.WoW
 {
     public struct ItemClassInfo
     {
-        [JsonProperty("class")]
-        public int Class { get; private set; }
+		[JsonProperty("class")]
+		public int Class;
 
-        [JsonProperty("name")]
-        public string Name { get; private set; }
+		[JsonProperty("name")]
+		public string Name;
 
-        public ItemClassInfo() { }
+        //public ItemClassInfo() { }
 
         public ItemClassInfo(int classId, string name)
         {
