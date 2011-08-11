@@ -47,14 +47,29 @@ namespace BattleDotNet.Objects.WoW
         private GuildAchievements Achievements = null;
         #endregion
 
-        #region Custom Achievement API (because the default sucks)
-        public IEnumerable<GuildCompletedAchievement> CompletedAchievements
+        #region Custom Achievement API
+        private IEnumerable<GuildAchievement> _completedAchievements;
+        public IEnumerable<GuildAchievement> CompletedAchievements
         {
-            get 
-            { 
-                return new GuildCompletedAchievementCollection(
-                    Achievements.CompletedAchievementIDs, 
-                    Achievements.CompletedAchievementDates).ToArray(); 
+            get
+            {
+                if (Achievements == null)
+                    return Enumerable.Empty<GuildAchievement>();
+
+                if (_completedAchievements == null)
+                {
+                    int[] ids = Achievements.CompletedAchievementIDs.ToArray();
+                    DateTime[] dates = Achievements.CompletedAchievementDates.ToArray();
+
+                    HashSet<GuildAchievement> completedAchievements = new HashSet<GuildAchievement>();
+                    for (int i = 0; i < ids.Length; i++)
+                    {
+                        completedAchievements.Add(new GuildAchievement(ids[i], dates[i]));
+                    }
+                    _completedAchievements = completedAchievements;
+                }
+
+                return _completedAchievements;
             }
         }
         #endregion

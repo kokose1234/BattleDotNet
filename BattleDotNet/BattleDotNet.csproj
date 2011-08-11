@@ -36,6 +36,7 @@
       <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Configuration\BattleDotNetSection.cs" />
     <Compile Include="DynamicClient.cs" />
     <Compile Include="Extensions\Int64Extensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
@@ -69,15 +71,18 @@
     <Compile Include="Objects\WoW\Faction.cs" />
     <Compile Include="Objects\WoW\GuildAchievements.cs" />
     <Compile Include="Objects\WoW\GuildCharacter.cs" />
-    <Compile Include="Objects\WoW\GuildCompletedAchievement.cs" />
-    <Compile Include="Objects\WoW\GuildCompletedAchievementCollection.cs" />
+    <Compile Include="Objects\WoW\GuildAchievement.cs" />
     <Compile Include="Objects\WoW\Guild.cs" />
     <Compile Include="Objects\WoW\GuildMember.cs" />
+    <Compile Include="Objects\WoW\Item.cs" />
+    <Compile Include="Objects\WoW\ItemClassInfo.cs" />
+    <Compile Include="Objects\WoW\ItemSubClassInfo.cs" />
     <Compile Include="Objects\WoW\RealmStatus.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="Performance\DebugTimer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestManager.cs" />
+    <Compile Include="Utilities\BattleNetTime.cs" />
     <Compile Include="WoWClient.cs" />
   </ItemGroup>
   <ItemGroup>
