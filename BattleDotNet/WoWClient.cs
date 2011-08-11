@@ -15,27 +15,38 @@ namespace BattleDotNet
         }
 
         #region Private Types
+        private class ClassData
+        {
+            [JsonProperty("classes")]
+            public IEnumerable<CharacterClassInfo> Classes { get; private set; }
+        }
+        
+        private class RaceData
+        {
+            [JsonProperty("races")]
+            public IEnumerable<CharacterRaceInfo> Races { get; private set; }
+        }
+        
         private class RealmStatusData
         {
             [JsonProperty("realms")]
             public IEnumerable<RealmStatus> Realms { get; private set; }
         }
-
-        private class RacesData
-        {
-            [JsonProperty("races")]
-            public IEnumerable<Race> Races { get; private set; }
-        }
         #endregion
+
+        public IEnumerable<CharacterClassInfo> GetClasses()
+        {
+            return this.Get<ClassData>("data/character/classes").Classes;
+        }
 
         public IEnumerable<RealmStatus> GetRealmStatuses(params string[] realms)
         {
             return this.Get<RealmStatusData>("realm/status", new Parameters { { "realms", string.Join(",", realms) } }).Realms;
         }
 
-        public IEnumerable<Race> GetRaces()
+        public IEnumerable<CharacterRaceInfo> GetRaces()
         {
-            return this.Get<RacesData>("data/character/races").Races;
+            return this.Get<RaceData>("data/character/races").Races;
         }
 
         public Character GetCharacter(string name, string realm, CharacterFields fields = CharacterFields.None)

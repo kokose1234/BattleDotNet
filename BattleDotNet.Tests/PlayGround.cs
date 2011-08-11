@@ -13,7 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetRaces().Count());
+            Console.WriteLine(client.GetClasses().Count());
         }
     }
 }

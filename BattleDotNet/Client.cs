@@ -24,7 +24,7 @@ namespace BattleDotNet
             UseHttps = !publicKey.IsNullOrWhiteSpace() && !privateKey.IsNullOrWhiteSpace();
 
             _baseUrl = NormalizePath(baseUrl);
-            _requestManager = new RequestManager(publicKey);
+            _requestManager = new RequestManager(publicKey, privateKey);
         }
 
         private readonly RequestManager _requestManager;

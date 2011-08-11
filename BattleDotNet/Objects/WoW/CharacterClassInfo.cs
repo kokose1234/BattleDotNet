@@ -8,7 +8,7 @@ namespace BattleDotNet.Objects.WoW
 {
     public struct CharacterClassInfo
     {
-        public int Id { get; private set; }
+        public int ID { get; private set; }
 
         public int Mask { get; private set; }
 
@@ -19,7 +19,7 @@ namespace BattleDotNet.Objects.WoW
         private CharacterClassInfo(int id, int mask, CharacterClassPowerType powerType, string name)
             : this()
         {
-            Id = id;
+            ID = id;
             Mask = mask;
             PowerType = powerType;
             Name = name;
@@ -43,7 +43,7 @@ namespace BattleDotNet.Objects.WoW
 
         public override int GetHashCode()
         {
-            return Id.GetHashCode() ^ Mask.GetHashCode() ^ PowerType.GetHashCode() ^ Name.GetHashCode(); 
+            return ID.GetHashCode() ^ Mask.GetHashCode() ^ PowerType.GetHashCode() ^ Name.GetHashCode(); 
         }
 
         public override string ToString()
@@ -193,7 +193,7 @@ namespace BattleDotNet.Objects.WoW
         #region Operators
         public static bool operator ==(CharacterClassInfo c1, CharacterClassInfo c2)
         {
-            return c1.Id == c2.Id && c1.Mask == c2.Mask && 
+            return c1.ID == c2.ID && c1.Mask == c2.Mask && 
                 c1.PowerType == c2.PowerType && c1.Name == c2.Name;
         }
 

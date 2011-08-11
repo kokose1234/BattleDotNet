@@ -7,7 +7,7 @@ using BattleDotNet.Objects.WoW;
 
 namespace BattleDotNet.Objects.WoW
 {
-    public class Race
+    public class CharacterRaceInfo
     {
         [JsonProperty("id")]
         public int ID { get; private set; }
