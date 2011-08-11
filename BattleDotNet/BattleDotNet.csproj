@@ -50,6 +50,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="JsonConverters\IEnumerableJavaScriptTimeStampConverter.cs" />
     <Compile Include="JsonConverters\JavaScriptTimeStampConverter.cs" />
+    <Compile Include="Objects\WoW\CharacterRace.cs" />
     <Compile Include="Objects\WoW\CharacterAchievement.cs" />
     <Compile Include="Objects\WoW\CharacterAchievements.cs" />
     <Compile Include="Objects\WoW\Character.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Objects\WoW\CharacterStats.cs" />
     <Compile Include="Objects\WoW\CharacterTalents.cs" />
     <Compile Include="Objects\WoW\CharacterTitle.cs" />
+    <Compile Include="Objects\WoW\Faction.cs" />
     <Compile Include="Objects\WoW\GuildAchievements.cs" />
     <Compile Include="Objects\WoW\GuildCharacter.cs" />
     <Compile Include="Objects\WoW\GuildCompletedAchievement.cs" />

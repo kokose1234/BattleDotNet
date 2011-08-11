@@ -20,11 +20,22 @@ namespace BattleDotNet
             [JsonProperty("realms")]
             public IEnumerable<RealmStatus> Realms { get; private set; }
         }
+
+        private class RacesData
+        {
+            [JsonProperty("races")]
+            public IEnumerable<Race> Races { get; private set; }
+        }
         #endregion
 
         public IEnumerable<RealmStatus> GetRealmStatuses(params string[] realms)
         {
             return this.Get<RealmStatusData>("realm/status", new Parameters { { "realms", string.Join(",", realms) } }).Realms;
+        }
+
+        public IEnumerable<Race> GetRaces()
+        {
+            return this.Get<RacesData>("data/character/races").Races;
         }
 
         public Character GetCharacter(string name, string realm, CharacterFields fields = CharacterFields.None)

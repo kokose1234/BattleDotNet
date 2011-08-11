@@ -13,7 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetCharacter("xtek", "shattered-hand", CharacterFields.Achievements).CompletedAchievements.Count());
+            Console.WriteLine(client.GetRaces().Count());
         }
     }
 }

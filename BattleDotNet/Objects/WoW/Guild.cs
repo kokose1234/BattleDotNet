@@ -34,7 +34,7 @@ namespace BattleDotNet.Objects.WoW
         public string Realm { get; private set; }
 
         [JsonProperty("side")]
-        public GuildFaction Side { get; private set; }
+        public Faction Side { get; private set; }
         #endregion
 
         #region Optional Member Properties
@@ -44,7 +44,7 @@ namespace BattleDotNet.Objects.WoW
 
         #region Optional Achievement Properties
         [JsonProperty("achievements")]
-        private GuildAchievements Achievements;
+        private GuildAchievements Achievements = null;
         #endregion
 
         #region Custom Achievement API (because the default sucks)
@@ -69,7 +69,7 @@ namespace BattleDotNet.Objects.WoW
 
     }
 
-    public enum GuildFaction
+    public enum Faction
     {
         Alliance,
         Horde

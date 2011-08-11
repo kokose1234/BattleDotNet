@@ -68,7 +68,8 @@ namespace BattleDotNet
                 {
                     using (StreamReader reader = new StreamReader(webResponse.GetResponseStream()))
                     {
-                        return reader.ReadToEnd();
+                        string result = reader.ReadToEnd();
+                        return result;
                     }
                 }
             }
