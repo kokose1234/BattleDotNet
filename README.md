@@ -23,6 +23,10 @@ Get character info using dynamic wrapper
 	DynamicClient client = new DynamicClient("wow");
 	int achievementPoints = client.Get("character/shattered-hand/xtek").achievementPoints;
 
+Use Blizzard API authentication
+
+	WoWClient client = new WoWClient(publicKey: "X", privateKey: "Y");
+
 ## Requirements
 * .NET 4.0 Client Profile
 
