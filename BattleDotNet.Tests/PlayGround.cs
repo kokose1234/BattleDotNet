@@ -13,7 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetGuildPerks().Count());
+            Console.WriteLine(client.GetGuildRewards().Where(r => r.MinGuildRepLevel > 0).Count());
         }
     }
 }
