@@ -26,6 +26,12 @@ namespace BattleDotNet
             [JsonProperty("races")]
             public IEnumerable<CharacterRaceInfo> Races { get; private set; }
         }
+
+        private class GuildPerkData
+        {
+            [JsonProperty("perks")]
+            public IEnumerable<GuildPerk> Perks { get; private set; }
+        }
         
         private class RealmStatusData
         {
@@ -37,6 +43,11 @@ namespace BattleDotNet
         public IEnumerable<CharacterClassInfo> GetClasses()
         {
             return this.Get<ClassData>("data/character/classes").Classes;
+        }
+
+        public IEnumerable<GuildPerk> GetGuildPerks()
+        {
+            return this.Get<GuildPerkData>("data/guild/perks").Perks;
         }
 
         public IEnumerable<RealmStatus> GetRealmStatuses(params string[] realms)
