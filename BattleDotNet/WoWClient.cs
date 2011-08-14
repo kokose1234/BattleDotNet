@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BattleDotNet.Objects.WoW;
 using Newtonsoft.Json;
+using BattleDotNet.JsonConverters;
 
 namespace BattleDotNet
 {
@@ -15,6 +16,40 @@ namespace BattleDotNet
         }
 
         #region Private Types
+        internal class AuctionData
+        {
+            internal class AuctionsData
+            {
+                [JsonProperty("auctions")]
+                internal IEnumerable<Auction> Auctions { get; private set; }
+            }
+
+            [JsonProperty("alliance")]
+            internal AuctionsData Alliance { get; private set; }
+
+            [JsonProperty("horde")]
+            internal AuctionsData Horde { get; private set; }
+
+            [JsonProperty("neutral")]
+            internal AuctionsData Neutral { get; private set; }
+        }
+
+        private class AuctionMetaData
+        {
+            [JsonProperty("files")]
+            internal IEnumerable<AuctionMetaDataFile> Files { get; private set; }
+        }
+
+        private class AuctionMetaDataFile
+        {
+            [JsonProperty("url")]
+            public string Url { get; private set; }
+
+            [JsonProperty("lastModified")]
+            [JsonConverter(typeof(JavaScriptTimeStampConverter))]
+            public DateTime LastModified { get; private set; }
+        }
+
         private class ClassData
         {
             [JsonProperty("classes")]
@@ -45,6 +80,16 @@ namespace BattleDotNet
             public IEnumerable<RealmStatus> Realms { get; private set; }
         }
         #endregion
+
+        public Auctions GetAuctions(string realmSlug)
+        {
+            if (string.IsNullOrWhiteSpace(realmSlug))
+                throw new ArgumentNullException("realmSlug");
+
+            AuctionMetaData metaData = Get<AuctionMetaData>(string.Format("auction/data/{0}", realmSlug));
+            AuctionData auctionData = Get<AuctionData>(fullUrl: metaData.Files.First().Url);
+            return new Auctions(auctionData.Alliance.Auctions, auctionData.Horde.Auctions, auctionData.Neutral.Auctions);
+        }
 
         public IEnumerable<CharacterClassInfo> GetClasses()
         {

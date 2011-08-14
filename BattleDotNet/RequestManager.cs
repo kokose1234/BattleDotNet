@@ -48,7 +48,7 @@ namespace BattleDotNet
 			}
 		}
 
-        public string GetContent(string url)
+        public string GetContent(string url, DateTime? ifModifiedSince = null)
         {
             if (url.IsNullOrWhiteSpace())
                 throw new ArgumentNullException("url");
@@ -70,6 +70,9 @@ namespace BattleDotNet
             webRequest.UserAgent = "BattleDotNet C# Library | https://github.com/ChadMoran/BattleDotNet";
 
             SetAuthentication(webRequest);
+
+            if (ifModifiedSince.HasValue)
+                webRequest.IfModifiedSince = ifModifiedSince.Value;
 
             try
             {
@@ -113,12 +116,12 @@ namespace BattleDotNet
 			request.Date = current;
         }
 
-        public T Get<T>(string url)
+        public T Get<T>(string url, DateTime? ifModifiedSince = null)
         {
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentNullException("url");
 
-            string content = GetContent(url);
+            string content = GetContent(url, ifModifiedSince: ifModifiedSince);
 
             using (DebugTimer.Start(string.Format("Deserializing")))
             {

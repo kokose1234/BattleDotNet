@@ -62,18 +62,17 @@ namespace BattleDotNet
             return string.Join(",", values).ToLowerInvariant();
         }
 
-        protected T Get<T>(string path, IEnumerable<KeyValuePair<string, string>> parameters = null, ClientRegion? region = null, Enum fields = null)
+        protected T Get<T>(string path = null, IEnumerable<KeyValuePair<string, string>> parameters = null, ClientRegion? region = null, Enum fields = null, string fullUrl = null, DateTime? ifModifiedSince = null)
         {
-            if (path == null)
-                throw new ArgumentNullException(path);
-
-            string url = string.Format(
-                    "{0}://{1}.battle.net/api/{2}/{3}",
-                    UseHttps ? "https" : "http",
-                    (region ?? this.Region).ToString().ToLowerInvariant(),
-                    BaseUrl,
-                    path
-                );
+            string url =
+                    fullUrl ??
+                    string.Format(
+                        "{0}://{1}.battle.net/api/{2}/{3}",
+                        UseHttps ? "https" : "http",
+                        (region ?? this.Region).ToString().ToLowerInvariant(),
+                        BaseUrl,
+                        path
+                    );
 
             // Fields were passed, need to ensure parameters isn't null since we're going to add to it
             if (parameters == null && fields != null)
@@ -87,7 +86,7 @@ namespace BattleDotNet
             if (parameters != null && parameters.Count() > 0)
                 url = string.Format("{0}?{1}", url, string.Join("&", parameters.Select(x => string.Format("{0}={1}", x.Key, x.Value)).ToArray()));
 
-            return _requestManager.Get<T>(url);
+            return _requestManager.Get<T>(url, ifModifiedSince: ifModifiedSince);
         }
     }
 

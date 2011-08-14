@@ -13,7 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetGuildRewards().Where(r => r.MinGuildRepLevel > 0).Count());
+            Console.WriteLine(client.GetAuctions("shattered-hand").Horde.Count());
         }
     }
 }
