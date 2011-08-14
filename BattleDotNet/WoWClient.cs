@@ -106,6 +106,14 @@ namespace BattleDotNet
             return this.Get<GuildRewardData>("data/guild/rewards").Rewards;
         }
 
+        public Item GetItem(int id)
+        {
+            if (id < 1)
+                throw new ArgumentOutOfRangeException("id");
+
+            return this.Get<Item>(string.Format("item/{0}", id));
+        }
+
         public IEnumerable<RealmStatus> GetRealmStatuses(params string[] realms)
         {
             return this.Get<RealmStatusData>("realm/status", new Parameters { { "realms", string.Join(",", realms) } }).Realms;

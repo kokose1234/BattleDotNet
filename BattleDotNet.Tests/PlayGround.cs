@@ -13,7 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetAuctions("shattered-hand").Horde.Count());
+            Console.WriteLine(client.GetItem(30318).Spells.Last().Details.Range);
         }
     }
 }
