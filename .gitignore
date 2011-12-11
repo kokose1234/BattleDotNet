@@ -29,6 +29,7 @@ obj/
 [Dd]ebug*/
 [Rr]elease*/
 Ankh.NoLoad
+*.nupkg
 
 #Tooling
 _ReSharper*/
