@@ -4,6 +4,24 @@ The goal of this Battle.NET wrapper is to give .NET developers and modern API to
 
 There is a dynamic API along with a staticly-typed one.  The reason for this is chances are the Battle.NET API will be ever-evolving during it's life.  Using the dynamic version gives a little more flexibility at the cost of losing intellisense and strongly-typed objects.
 
+## Feature Support
+
+* Multiple Regions
+* Authentication / API Key
+
+## Data Support
+
+* Character Profiles
+* Guild Profiles
+* Auctions
+* Realm Status
+* Items
+* Arena Teams
+* Character Races
+* Character Classes
+* Guild Rewards
+* Guild Perks
+
 ## Getting Started
 
 ### Examples
