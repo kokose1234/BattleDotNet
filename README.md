@@ -8,7 +8,10 @@ There is a dynamic API along with a staticly-typed one.  The reason for this is 
 
 * Multiple Regions
 * Authentication / API Key
-
+* Auto HTTPS when authentication is used
+* Internal time syncing with Blizzard's servers to ensure authentication always works
+* .NET Client Profile assemblies -- If you use this library in a desktop application the user doesn't have to have the full .NET runtime installed
+                         
 ### Data Support
 
 * Character Profiles
