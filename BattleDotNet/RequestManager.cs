@@ -57,7 +57,7 @@ namespace BattleDotNet
 
             // Use GZip/Delfate when possible
             webRequest.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-            
+
             // This will help with speed by keeping the internal connection
             // pool on a per-thread basis
             webRequest.ConnectionGroupName = Thread.CurrentThread.ManagedThreadId.ToString();
@@ -67,7 +67,7 @@ namespace BattleDotNet
             webRequest.Proxy = null;
 
             // Give some information
-            webRequest.UserAgent = "BattleDotNet C# Library | https://github.com/ChadMoran/BattleDotNet";
+            webRequest.UserAgent = "BattleDotNet C# Library | http://git.io/bnet";
 
             SetAuthentication(webRequest);
 
@@ -88,9 +88,15 @@ namespace BattleDotNet
                     }
                 }
             }
-            catch (WebException)
+            catch (WebException ex)
             {
-                // TODO : Throw custom exception
+                HttpWebResponse response = null;
+                if (ex.Status == WebExceptionStatus.ProtocolError && (response = ex.Response as HttpWebResponse) != null)
+                {
+                    if (response.StatusCode == HttpStatusCode.NotFound)
+                        return null;
+                }
+
                 throw;
             }
         }
@@ -122,6 +128,9 @@ namespace BattleDotNet
                 throw new ArgumentNullException("url");
 
             string content = GetContent(url, ifModifiedSince: ifModifiedSince);
+
+            if (content.IsNullOrWhiteSpace())
+                return default(T);
 
             using (DebugTimer.Start(string.Format("Deserializing")))
             {

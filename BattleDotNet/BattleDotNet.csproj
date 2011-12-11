@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
-    <Compile Include="Configuration\BattleDotNetSection.cs" />
     <Compile Include="DynamicClient.cs" />
     <Compile Include="Extensions\Int64Extensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />

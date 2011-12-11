@@ -8,6 +8,7 @@ There is a dynamic API along with a staticly-typed one.  The reason for this is 
 
 * Multiple Regions
 * Authentication / API Key
+* Auto switchover to HTTPS when keys are specifieid
 
 ## Data Support
 

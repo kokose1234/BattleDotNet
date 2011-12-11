@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Dynamic;
 using BattleDotNet.Extensions;
+using System.Net;
 
 namespace BattleDotNet
 {
@@ -28,16 +29,16 @@ namespace BattleDotNet
 
         private readonly RequestManager _requestManager;
 
-        /// <summary>
-        /// Gets or sets a value that indicates if HTTPS should be used.
-        /// </summary>
-        public bool UseHttps { get; private set; }
-
         private readonly string _baseUrl;
         protected string BaseUrl
         {
             get { return _baseUrl; }
         }
+
+        /// <summary>
+        /// Gets or sets a value that indicates if HTTPS should be used.
+        /// </summary>
+        public bool UseHttps { get; private set; }
 
         private string NormalizePath(string path)
         {
@@ -85,7 +86,18 @@ namespace BattleDotNet
             if (parameters != null && parameters.Count() > 0)
                 url = string.Format("{0}?{1}", url, string.Join("&", parameters.Select(x => string.Format("{0}={1}", x.Key, x.Value)).ToArray()));
 
-            return _requestManager.Get<T>(url, ifModifiedSince: ifModifiedSince);
+            try
+            {
+                return _requestManager.Get<T>(url, ifModifiedSince: ifModifiedSince);
+            }
+            catch (WebException ex)
+            {
+                if (ex.Status == WebExceptionStatus.ProtocolError && ex.Response != null)
+                {
+                }
+            }
+
+            return default(T);
         }
     }
 
