@@ -116,7 +116,7 @@ namespace BattleDotNet.Objects.WoW
     public class ItemWeaponInfo
     {
         [JsonProperty("damage")]
-        public IEnumerable<ItemWeaponInfoDamage> Damage { get; private set; }
+        public ItemWeaponInfoDamage Damage { get; private set; }
 
         [JsonProperty("dps")]
         public float Dps { get; private set; }
