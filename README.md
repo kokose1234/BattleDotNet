@@ -8,9 +8,11 @@ There is a dynamic API along with a staticly-typed one.  The reason for this is 
 
 * Multiple Regions
 * Authentication / API Key
-* Auto switchover to HTTPS when keys are specifieid
-
-## Data Support
+* Auto HTTPS when authentication is used
+* Internal time syncing with Blizzard's servers to ensure authentication always works
+* .NET Client Profile assemblies -- If you use this library in a desktop application the user doesn't have to have the full .NET runtime installed
+                         
+### Data Support
 
 * Character Profiles
 * Guild Profiles
@@ -22,6 +24,17 @@ There is a dynamic API along with a staticly-typed one.  The reason for this is 
 * Character Classes
 * Guild Rewards
 * Guild Perks
+
+### Roadmap
+
+* Better handling of API errors
+* Request tracking (throttling support)
+* Async support
+* Faster JSON parsing
+* HTTP caching
+* Data caching
+* Web project (creating tooltips, etc)
+* ETL Helpers
 
 ## Getting Started
 
