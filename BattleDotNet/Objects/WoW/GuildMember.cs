@@ -10,7 +10,7 @@ namespace BattleDotNet.Objects.WoW
     public class GuildMember
     {
         [JsonProperty("character")]
-        public GuildCharacter Character { get; private set; }
+        public MetaCharacter Character { get; private set; }
 
         [JsonProperty("rank")]
         public int Rank { get; private set; }

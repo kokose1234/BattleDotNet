@@ -10,7 +10,7 @@ namespace BattleDotNet
 {
     public class WoWClient : Client
     {
-        public WoWClient(ClientRegion? region = null, string publicKey = null, string privateKey = null)
+        public WoWClient(ClientRegion? region = ClientRegion.US, string publicKey = null, string privateKey = null)
             : base("wow", region, publicKey, privateKey)
         {
         }
@@ -80,6 +80,16 @@ namespace BattleDotNet
             public IEnumerable<RealmStatus> Realms { get; private set; }
         }
         #endregion
+
+        public ArenaTeam GetArenaTeam(string realmSlug, int teamSize, string teamName)
+        {
+            if (string.IsNullOrWhiteSpace(realmSlug))
+                throw new ArgumentNullException("realmSlug");
+            else if (string.IsNullOrWhiteSpace(teamName))
+                throw new ArgumentNullException("teamName");
+
+            return this.Get<ArenaTeam>(string.Format("arena/{0}/{1}v{1}/{2}", realmSlug, teamSize, teamName));
+        }
 
         public Auctions GetAuctions(string realmSlug)
         {

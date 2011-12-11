@@ -13,7 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetItem(31760).Spells.First().Details.Description);
+            Console.WriteLine(client.GetArenaTeam("skullcrusher", 2, "Your Loss").Members.First().Rating);
         }
     }
 }

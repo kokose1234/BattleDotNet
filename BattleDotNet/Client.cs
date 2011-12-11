@@ -14,13 +14,12 @@ namespace BattleDotNet
         {
         }
 
-        public Client(string baseUrl, ClientRegion? region = null, string publicKey = null, string privateKey = null)
+        public Client(string baseUrl, ClientRegion? region = ClientRegion.US, string publicKey = null, string privateKey = null)
         {
             if (baseUrl == null)
                 throw new ArgumentNullException("baseUrl");
 
             // Defaults
-            Region = region ?? ClientRegion.US;
             UseHttps = !publicKey.IsNullOrWhiteSpace() && !privateKey.IsNullOrWhiteSpace();
 
             _baseUrl = NormalizePath(baseUrl);
