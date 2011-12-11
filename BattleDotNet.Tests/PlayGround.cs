@@ -13,7 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetItem(25).Name);
+            Console.WriteLine(client.GetItem(31760).Spells.First().Details.Description);
         }
     }
 }

@@ -89,7 +89,7 @@ namespace BattleDotNet.Objects.WoW
         public string Name { get; private set; }
 
         [JsonProperty("quality")]
-        public int Quality { get; private set; }
+        public ItemQuality Quality { get; private set; }
 
         [JsonProperty("requiredLevel")]
         public int RequiredLevel { get; private set; }
@@ -104,7 +104,7 @@ namespace BattleDotNet.Objects.WoW
         public int SellPrice { get; private set; }
 
         [JsonProperty("itemSpells")]
-        public IEnumerable<ItemSpell> Spells { get; private set; }
+        public ItemSpell[] Spells { get; private set; }
 
         [JsonProperty("stackable")]
         public int Stackable { get; private set; }
