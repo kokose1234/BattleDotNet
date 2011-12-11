@@ -13,7 +13,9 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetArenaTeam("skullcrusher", 2, "Your Loss").Members.First().Rating);
+            var auctions = client.GetAuctions("shattered-hand").Horde;
+            foreach (var auction in auctions.Where(a => a.OwnerName.Contains("Xtek")))
+                Console.WriteLine(auction.OwnerName + " is selling " + client.GetItem(auction.ItemID).Name + " x" + auction.Quantity + " for " + auction.Buyout);
         }
     }
 }
