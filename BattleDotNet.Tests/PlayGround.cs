@@ -13,7 +13,10 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetItem(25, locale: Locale.es_MX).Name);
+            foreach (var x in client.GetClasses(locale: Locale.es_MX))
+            {
+                Console.WriteLine(x.Name);
+            }
         }
     }
 }

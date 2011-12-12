@@ -81,14 +81,14 @@ namespace BattleDotNet
         }
         #endregion
 
-        public ArenaTeam GetArenaTeam(string realmSlug, int teamSize, string teamName)
+        public ArenaTeam GetArenaTeam(string realmSlug, int teamSize, string teamName, Region? region = null, Locale? locale = null)
         {
             if (string.IsNullOrWhiteSpace(realmSlug))
                 throw new ArgumentNullException("realmSlug");
             else if (string.IsNullOrWhiteSpace(teamName))
                 throw new ArgumentNullException("teamName");
 
-            return this.Get<ArenaTeam>(string.Format("arena/{0}/{1}v{1}/{2}", realmSlug, teamSize, teamName));
+            return this.Get<ArenaTeam>(string.Format("arena/{0}/{1}v{1}/{2}", realmSlug, teamSize, teamName), region: region, locale: locale);
         }
 
         public Auctions GetAuctions(string realmSlug)
@@ -101,19 +101,19 @@ namespace BattleDotNet
             return new Auctions(auctionData.Alliance.Auctions, auctionData.Horde.Auctions, auctionData.Neutral.Auctions);
         }
 
-        public IEnumerable<CharacterClassInfo> GetClasses()
+        public IEnumerable<CharacterClassInfo> GetClasses(Region? region = null, Locale? locale = null)
         {
-            return this.Get<ClassData>("data/character/classes").Classes;
+            return this.Get<ClassData>("data/character/classes", region: region, locale: locale).Classes;
         }
 
-        public IEnumerable<GuildPerk> GetGuildPerks()
+        public IEnumerable<GuildPerk> GetGuildPerks(Region? region = null, Locale? locale = null)
         {
-            return this.Get<GuildPerkData>("data/guild/perks").Perks;
+            return this.Get<GuildPerkData>("data/guild/perks", region: region, locale: locale).Perks;
         }
 
-        public IEnumerable<GuildReward> GetGuildRewards()
+        public IEnumerable<GuildReward> GetGuildRewards(Region? region = null, Locale? locale = null)
         {
-            return this.Get<GuildRewardData>("data/guild/rewards").Rewards;
+            return this.Get<GuildRewardData>("data/guild/rewards", region: region, locale: locale).Rewards;
         }
 
         public Item GetItem(int id, Region? region = null, Locale? locale = null)
@@ -129,29 +129,29 @@ namespace BattleDotNet
             return this.Get<RealmStatusData>("realm/status", new Parameters { { "realms", string.Join(",", realms) } }).Realms;
         }
 
-        public IEnumerable<CharacterRaceInfo> GetRaces()
+        public IEnumerable<CharacterRaceInfo> GetRaces(Region? region = null, Locale? locale = null)
         {
-            return this.Get<RaceData>("data/character/races").Races;
+            return this.Get<RaceData>("data/character/races", region: region, locale: locale).Races;
         }
 
-        public Character GetCharacter(string name, string realm, CharacterFields fields = CharacterFields.None)
+        public Character GetCharacter(string name, string realm, CharacterFields fields = CharacterFields.None, Region? region = null, Locale? locale = null)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentNullException("name");
             if (string.IsNullOrWhiteSpace(realm))
                 throw new ArgumentNullException("realm");
 
-            return this.Get<Character>(string.Format("character/{0}/{1}", realm, name), fields: fields);
+            return this.Get<Character>(string.Format("character/{0}/{1}", realm, name), fields: fields, region: region, locale: locale);
         }
 
-        public Guild GetGuild(string name, string realm, GuildFields fields = GuildFields.None, Locale? locale = null)
+        public Guild GetGuild(string name, string realm, GuildFields fields = GuildFields.None, Region? region = null, Locale? locale = null)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentNullException("name");
             if (string.IsNullOrWhiteSpace(realm))
                 throw new ArgumentNullException("realm");
 
-            return this.Get<Guild>(string.Format("guild/{0}/{1}", realm, name), fields: fields);
+            return this.Get<Guild>(string.Format("guild/{0}/{1}", realm, name), fields: fields, region: region, locale: locale);
         }
     }
 
