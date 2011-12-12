@@ -15,7 +15,7 @@ namespace BattleDotNet
         {
         }
 
-        public Client(string baseUrl, ClientRegion? region = ClientRegion.US, string publicKey = null, string privateKey = null)
+        public Client(string baseUrl, Region? region = Region.US, string publicKey = null, string privateKey = null)
         {
             if (baseUrl == null)
                 throw new ArgumentNullException("baseUrl");
@@ -45,7 +45,7 @@ namespace BattleDotNet
             return path.TrimEnd('/').TrimStart('/');
         }
 
-        public ClientRegion Region { get; private set; }
+        public Region Region { get; private set; }
 
         protected string GetFieldsString(Enum flagsEnum)
         {
@@ -62,7 +62,7 @@ namespace BattleDotNet
             return string.Join(",", values).ToLowerInvariant();
         }
 
-        protected T Get<T>(string path = null, IEnumerable<KeyValuePair<string, string>> parameters = null, ClientRegion? region = null, Enum fields = null, string fullUrl = null, DateTime? ifModifiedSince = null)
+        protected T Get<T>(string path = null, IEnumerable<KeyValuePair<string, string>> parameters = null, Region? region = null, Enum fields = null, string fullUrl = null, DateTime? ifModifiedSince = null, Locale? locale = null)
         {
             string url =
                     fullUrl ??
@@ -75,33 +75,25 @@ namespace BattleDotNet
                     );
 
             // Fields were passed, need to ensure parameters isn't null since we're going to add to it
-            if (parameters == null && fields != null)
+            if (parameters == null)
                 parameters = new Dictionary<string, string>();
 
             // Add fields to the parameters
             if (fields != null)
                 parameters = parameters.Concat(new Parameters { { "fields", GetFieldsString(fields) } });
 
+            if (locale != null)
+                parameters = parameters.Concat(new Parameters { { "locale", locale.ToString() } });
+
             // Add parameters onto the url
             if (parameters != null && parameters.Count() > 0)
                 url = string.Format("{0}?{1}", url, string.Join("&", parameters.Select(x => string.Format("{0}={1}", x.Key, x.Value)).ToArray()));
 
-            try
-            {
-                return _requestManager.Get<T>(url, ifModifiedSince: ifModifiedSince);
-            }
-            catch (WebException ex)
-            {
-                if (ex.Status == WebExceptionStatus.ProtocolError && ex.Response != null)
-                {
-                }
-            }
-
-            return default(T);
+            return _requestManager.Get<T>(url, ifModifiedSince: ifModifiedSince);
         }
     }
 
-    public enum ClientRegion
+    public enum Region
     {
         /// <summary>
         /// United States
@@ -119,5 +111,18 @@ namespace BattleDotNet
         /// Taiwan
         /// </summary>
         TW
+    }
+
+    public enum Locale
+    {
+        en_US,
+        es_MX,
+        en_GB,
+        fr_FR,
+        ru_RU,
+        de_DE,
+        ko_KR,
+        zh_TW,
+        zh_CN
     }
 }

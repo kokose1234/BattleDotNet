@@ -10,7 +10,7 @@ namespace BattleDotNet
 {
     public class WoWClient : Client
     {
-        public WoWClient(ClientRegion? region = ClientRegion.US, string publicKey = null, string privateKey = null)
+        public WoWClient(Region? region = Region.US, string publicKey = null, string privateKey = null)
             : base("wow", region, publicKey, privateKey)
         {
         }
@@ -116,12 +116,12 @@ namespace BattleDotNet
             return this.Get<GuildRewardData>("data/guild/rewards").Rewards;
         }
 
-        public Item GetItem(int id)
+        public Item GetItem(int id, Region? region = null, Locale? locale = null)
         {
             if (id < 1)
                 throw new ArgumentOutOfRangeException("id");
 
-            return this.Get<Item>(string.Format("item/{0}", id));
+            return this.Get<Item>(string.Format("item/{0}", id), region: region, locale: locale);
         }
 
         public IEnumerable<RealmStatus> GetRealmStatuses(params string[] realms)
@@ -144,7 +144,7 @@ namespace BattleDotNet
             return this.Get<Character>(string.Format("character/{0}/{1}", realm, name), fields: fields);
         }
 
-        public Guild GetGuild(string name, string realm, GuildFields fields = GuildFields.None)
+        public Guild GetGuild(string name, string realm, GuildFields fields = GuildFields.None, Locale? locale = null)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentNullException("name");

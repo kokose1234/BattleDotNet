@@ -13,7 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetItem(1) == null);
+            Console.WriteLine(client.GetItem(25, locale: Locale.es_MX).Name);
         }
     }
 }
