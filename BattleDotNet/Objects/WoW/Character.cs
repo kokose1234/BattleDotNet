@@ -47,6 +47,9 @@ namespace BattleDotNet.Objects.WoW
         [JsonProperty("companions")]
         public IEnumerable<int> CompanionIDs { get; private set; }
 
+        [JsonProperty("quests")]
+        public IEnumerable<int> CompletedQuestIDs { get; private set; }
+
         [JsonProperty("guild")]
         public CharacterGuild Guild { get; private set; }
 

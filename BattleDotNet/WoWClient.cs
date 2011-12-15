@@ -173,6 +173,7 @@ namespace BattleDotNet
         Pets = 0x400,
         Achievements = 0x800,
         Progression = 0x1000,
+        Quests = 0x2000,
 
         All = 0x7FFFFFFF,
     }

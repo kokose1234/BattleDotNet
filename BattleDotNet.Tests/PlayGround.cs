@@ -13,10 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            foreach (var x in client.GetClasses(locale: Locale.es_MX))
-            {
-                Console.WriteLine(x.Name);
-            }
+            Console.WriteLine(client.GetCharacter("Xtek", "Shattered Hand", CharacterFields.Quests).CompletedQuestIDs.Count());
         }
     }
 }
