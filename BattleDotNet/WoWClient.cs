@@ -101,6 +101,16 @@ namespace BattleDotNet
             return new Auctions(auctionData.Alliance.Auctions, auctionData.Horde.Auctions, auctionData.Neutral.Auctions);
         }
 
+        public Character GetCharacter(string name, string realm, CharacterFields fields = CharacterFields.None, Region? region = null, Locale? locale = null)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentNullException("name");
+            if (string.IsNullOrWhiteSpace(realm))
+                throw new ArgumentNullException("realm");
+
+            return this.Get<Character>(string.Format("character/{0}/{1}", realm, name), fields: fields, region: region, locale: locale);
+        }
+
         public IEnumerable<CharacterClassInfo> GetClasses(Region? region = null, Locale? locale = null)
         {
             return this.Get<ClassData>("data/character/classes", region: region, locale: locale).Classes;
@@ -134,16 +144,6 @@ namespace BattleDotNet
             return this.Get<RaceData>("data/character/races", region: region, locale: locale).Races;
         }
 
-        public Character GetCharacter(string name, string realm, CharacterFields fields = CharacterFields.None, Region? region = null, Locale? locale = null)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name");
-            if (string.IsNullOrWhiteSpace(realm))
-                throw new ArgumentNullException("realm");
-
-            return this.Get<Character>(string.Format("character/{0}/{1}", realm, name), fields: fields, region: region, locale: locale);
-        }
-
         public Guild GetGuild(string name, string realm, GuildFields fields = GuildFields.None, Region? region = null, Locale? locale = null)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -152,6 +152,14 @@ namespace BattleDotNet
                 throw new ArgumentNullException("realm");
 
             return this.Get<Guild>(string.Format("guild/{0}/{1}", realm, name), fields: fields, region: region, locale: locale);
+        }
+
+        public Quest GetQuest(int id, Region? region = null, Locale? locale = null)
+        {
+            if (id < 1)
+                throw new ArgumentOutOfRangeException("id");
+
+            return this.Get<Quest>(string.Format("quest/{0}", id), region: region, locale: locale);
         }
     }
 
