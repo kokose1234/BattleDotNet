@@ -84,6 +84,7 @@
     <Compile Include="Objects\WoW\ItemSubClassInfo.cs" />
     <Compile Include="Objects\WoW\Quest.cs" />
     <Compile Include="Objects\WoW\RealmStatus.cs" />
+    <Compile Include="Objects\WoW\Recipe.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="Performance\DebugTimer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

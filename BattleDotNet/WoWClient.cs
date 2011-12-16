@@ -139,11 +139,6 @@ namespace BattleDotNet
             return this.Get<RealmStatusData>("realm/status", new Parameters { { "realms", string.Join(",", realms) } }).Realms;
         }
 
-        public IEnumerable<CharacterRaceInfo> GetRaces(Region? region = null, Locale? locale = null)
-        {
-            return this.Get<RaceData>("data/character/races", region: region, locale: locale).Races;
-        }
-
         public Guild GetGuild(string name, string realm, GuildFields fields = GuildFields.None, Region? region = null, Locale? locale = null)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -160,6 +155,19 @@ namespace BattleDotNet
                 throw new ArgumentOutOfRangeException("id");
 
             return this.Get<Quest>(string.Format("quest/{0}", id), region: region, locale: locale);
+        }
+
+        public IEnumerable<CharacterRaceInfo> GetRaces(Region? region = null, Locale? locale = null)
+        {
+            return this.Get<RaceData>("data/character/races", region: region, locale: locale).Races;
+        }
+
+        public Recipe GetRecipe(int id, Region? region = null, Locale? locale = null)
+        {
+            if (id < 1)
+                throw new ArgumentOutOfRangeException("id");
+
+            return this.Get<Recipe>(string.Format("recipe/{0}", id), region: region, locale: locale);
         }
     }
 
