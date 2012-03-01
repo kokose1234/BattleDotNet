@@ -13,7 +13,7 @@ namespace BattleDotNet.Tests
         public void Test()
         {
             var client = new WoWClient();
-            Console.WriteLine(client.GetRecipe(33994).Profession);
+            Console.WriteLine(client.GetAuctions("shattered-hand").Horde.Count());
         }
     }
 }

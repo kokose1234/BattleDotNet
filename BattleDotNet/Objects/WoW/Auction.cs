@@ -28,16 +28,16 @@ namespace BattleDotNet.Objects.WoW
         public long ID { get; private set; }
 
         [JsonProperty("item")]
-        public int ItemID { get; private set; }
+        public long ItemID { get; private set; }
 
         [JsonProperty("owner")]
         public string OwnerName { get; private set; }
 
         [JsonProperty("bid")]
-        public int Bid { get; private set; }
+        public long Bid { get; private set; }
 
         [JsonProperty("buyout")]
-        public int Buyout { get; private set; }
+        public long Buyout { get; private set; }
 
         [JsonProperty("quantity")]
         public int Quantity { get; private set; }
