@@ -132,7 +132,8 @@ namespace BattleDotNet.Objects.WoW
         Shaman = 7,
         Mage = 8,
         Warlock = 9,
-        Druid = 11
+        Druid = 11,
+        Monk = 10
     }
 
     public enum CharacterRace
@@ -148,7 +149,8 @@ namespace BattleDotNet.Objects.WoW
         Goblin = 9,
         BloodElf = 10,
         Draenei = 11,
-        Worgen = 22
+        Worgen = 22,
+        Pandaren = 24
     }
 
     public enum CharacterGender
