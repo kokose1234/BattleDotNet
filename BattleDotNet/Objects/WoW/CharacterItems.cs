@@ -82,12 +82,15 @@ namespace BattleDotNet.Objects.WoW
 
         [JsonProperty("quality")]
         public ItemQuality Quality { get; private set; }
+
+        [JsonProperty("tooltipParams")]
+        public CharacterItemTooltip toolTip { get; private set; }
     }
 
     public class CharacterItemTooltip
     {
         [JsonProperty("enchant")]
-        public int? EnchandID { get; private set; }
+        public int? EnchantID { get; private set; }
 
         [JsonProperty("gem0")]
         public int? Gem1ID { get; private set; }
@@ -109,6 +112,22 @@ namespace BattleDotNet.Objects.WoW
 
         [JsonProperty("set")]
         public IEnumerable<int> SetItemIDs { get; private set; }
+
+        [JsonProperty("upgrade")]
+        public CharacterItemUpgradeInfo upgrade { get; private set; }
+                
+    }
+
+    public class CharacterItemUpgradeInfo
+    {
+        [JsonProperty]
+        public int Current { get; private set; }
+
+        [JsonProperty]
+        public int Total { get; private set; }
+
+        [JsonProperty]
+        public int ItemLevelIncrement { get; private set; }
     }
 
     public enum ItemQuality
